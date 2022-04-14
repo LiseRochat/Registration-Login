@@ -20,7 +20,6 @@
 
 ### General Info
 Develop a simple form of connection and registration with PHP and Wamp Server </br>
-<a href="https://api.publicapis.org/entries" title="Link to Entries API">Link API</a>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
