@@ -6,9 +6,9 @@ require("../Controller/BDDController.php");
 
 /*************************************** Inscription Utilisateur *************************************** */
 $bdd->newUser($bddConnection,
-                $_POST['firstnameIns'],
-                $_POST['lastnameIns'],
-                $_POST['emailIns'],
-                $_POST['passwordIns'],
+                $_POST['firstname'],
+                $_POST['lastname'],
+                $_POST['email'],
+                $_POST['password'],
                 '1'
             );
