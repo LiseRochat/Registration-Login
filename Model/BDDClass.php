@@ -54,7 +54,9 @@ class BDD {
         $data = trim($data);
         // Surpime les antislashs d'une chaine
         $data = stripslashes($data);
-
+        // Convertit les caractères spéciaux en entités HTML
+        $data = htmlspecialchars($data);
+        return $data;
     }
     
 }
