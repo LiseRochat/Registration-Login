@@ -14,7 +14,7 @@ $user = $bdd->login($bddConnection, $_POST['password'], $_POST['email']);
 /*************************************** Sauvegarde S_SESSION*************************************** */
 // On instancie un nouvel objet Storage
 $sessionUserSignIng = new Storage();
-// On sauvegarde ses données dans la variable globale $_SESSIN a l'aide de la methode de notre classe on récupère un tableau de donnée
+// On sauvegarde ses données dans la variable globale $_SESSION puis a l'aide de la methode de notre classe on récupère un tableau de donnée
 $sessionUserSignIng->storeUSerData($user);
 // On affiche ses données soit toutes soit une valeur en particulier
 var_dump($sessionUserSignIng->getUserData()['firstname']);
