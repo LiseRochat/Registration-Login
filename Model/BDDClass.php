@@ -52,6 +52,8 @@ class BDD {
     public function validationData($data) {
         // Trim suprime les caractères invisibles en début et fin de chaine
         $data = trim($data);
+        // Surpime les antislashs d'une chaine
+        $data = stripslashes($data);
 
     }
     
