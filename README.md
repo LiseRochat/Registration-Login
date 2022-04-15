@@ -26,7 +26,7 @@ Develop a simple form of connection and registration with PHP and Wamp Server </
 
 ### Visual
 Here is an overview of project. </br>
-<img src="/img/screenshot01.png" alt="screenshot result">
+<img src="assets/img/screenshot01.png" alt="screenshot result">
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
@@ -50,7 +50,8 @@ git clone https://github.com/LiseRochat/Registration-Login
 2. Open file with you text editor 
 3. Create a bdd with name **connection** in your phpmyadmin
 4. Import sql file in bdd
-5. Run :
+5. Initialize bdd variables 
+6. Run :
  ```
   localhost/Registration-Login
  ```
