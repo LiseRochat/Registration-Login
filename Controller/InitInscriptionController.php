@@ -5,10 +5,15 @@ require("../Model/StorageClass.php");
 require("../Controller/BDDController.php");
 
 /*************************************** Inscription Utilisateur *************************************** */
-$bdd->newUser($bddConnection,
-                $_POST['firstname'],
-                $_POST['lastname'],
-                $_POST['email'],
-                $_POST['password'],
-                '1'
-            );
+
+if(!empty($_POST)) {
+    if(!empty($_POST['firstname'] && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']))) {
+            $bdd->newUser($bddConnection,
+            $_POST['firstname'],
+            $_POST['lastname'],
+            $_POST['email'],
+            $_POST['password'],
+            '1'
+        );
+    }
+}
