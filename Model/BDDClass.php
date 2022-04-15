@@ -29,12 +29,6 @@ class BDD {
 
     }
 
-    // Methode permettant de hasher le mot de passe avant enregistrement en bdd
-    public function hashPassword($password) {
-
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
-
     // Methode permettant la connexion d'un utilisateur existant
     public function login($bdd, $password, $email) {
 
@@ -47,4 +41,17 @@ class BDD {
             echo "try again !!";
         }
     }
+
+    // Methode permettant de hasher le mot de passe avant enregistrement en bdd
+    public function hashPassword($password) {
+
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    // Function validation data 
+    public function validationData($data) {
+
+
+    }
+    
 }
