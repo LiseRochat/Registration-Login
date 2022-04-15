@@ -18,3 +18,6 @@ $sessionUserSignIng = new Storage();
 $sessionUserSignIng->storeUSerData($user);
 // On affiche ses données soit toutes soit une valeur en particulier
 var_dump($sessionUserSignIng->getUserData()['firstname']);
+header('Status: 301 Moved Permanently", false, 301');
+header("Location: ../vue/home.php");
+die();
