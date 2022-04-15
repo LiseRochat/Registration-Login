@@ -42,8 +42,8 @@ class BDD {
         $query = $bdd->query($sql)->fetch();
 
         if(password_verify($password, $query['password'])) {
-            echo "connecter !!";
-            return $query;
+            header('Status: 301 Moved Permanently", false, 301');
+            header("Location: ../vue/home.php");
         } else {
             echo "try again !!";
         }
