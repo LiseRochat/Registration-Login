@@ -3,8 +3,8 @@
 session_start();
 
 // Apelle de nos class
-require("Model/BDDClass.php");
-require("Model/StorageClass.php");
+require("../Model/BDDClass.php");
+require("../Model/StorageClass.php");
 
 /*************************************** Connexion BDD *************************************** */
 // On crée une nouvelle instance de BDD
@@ -13,10 +13,16 @@ $bdd = new BDD();
 $bddConnection = $bdd->connection();
 
 /*************************************** Inscription Utilisateur *************************************** */
-//$bdd->newUser($bddConnection,'lise','rochat','liserochat@live.fr','azerty','1');
+$bdd->newUser($bddConnection,
+                $_POST['firstnameIns'],
+                $_POST['lastnameIns'],
+                $_POST['emailIns'],
+                $_POST['passwordIns'],
+                '1'
+            );
 
 /*************************************** Connexion Utilisateur *************************************** */
-// On recupère les données du formulaire de connexion aec la methode POST et on fait apelle a la méthode login denotre class BDD
+// On recupère les données du formulaire de connexion avec la methode POST et on fait apelle a la méthode login de notre class BDD
 $user = $bdd->login($bddConnection, $_POST['password'], $_POST['email']);
 
 /*************************************** Sauveagrde S_SESSION*************************************** */

@@ -10,7 +10,7 @@
 <body>
     <div class="card">
         <h1>Inscription</h1>
-        <form method="post" action="InitConnectionController.php">
+        <form method="post" action="../Controller/InitConnectionController.php">
             <label for="firstname">Prenom</label>
             <input type="text" name="firstname" placeholder="votre prénom" firstname" required>
             <label for="lastname">Nom</label>
