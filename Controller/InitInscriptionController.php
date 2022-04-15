@@ -15,6 +15,7 @@ if(!empty($_POST)) {
         $email = $bdd->validationData($_POST['email']);
         $password = $bdd->validationData($_POST['password']);
 
+        // On ajoute des filtres et des tests suplémentaires sur nos données avant envoi en bdd
         if( strlen($firstname) <= 30
             && strlen($lastname) <= 30
             && strlen($password) >= 6
