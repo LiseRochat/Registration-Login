@@ -49,7 +49,9 @@ class BDD {
     // Methode permettant de hasher le mot de passe avant enregistrement en bdd
     public function hashPassword($password) {
 
-        return password_hash($password, PASSWORD_DEFAULT);
+        $password = $password . "neverYouC4nF&&d";
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        return $password; 
     }
 
     // Function validation data 

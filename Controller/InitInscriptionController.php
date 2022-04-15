@@ -23,8 +23,7 @@ if(!empty($_POST)) {
                 $bdd->newUser($bddConnection, $fristname, $lastname, $email, $password, 1);
 
         } else {
-            echo "Errors";
+            echo "Errors !!";
         }
-        
     }
 }
