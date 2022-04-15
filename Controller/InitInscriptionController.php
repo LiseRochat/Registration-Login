@@ -15,7 +15,7 @@ if(!empty($_POST)) {
         $email = $bdd->validationData($_POST['email']);
         $password = $bdd->validationData($_POST['password']);
 
-        if(strlen($firstname) <= 30
+        if( strlen($firstname) <= 30
             && strlen($lastname) <= 30
             && strlen($password) >= 6
             && filter_var($email, FILTER_VALIDATE_EMAIL)) {

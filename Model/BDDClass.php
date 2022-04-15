@@ -21,12 +21,16 @@ class BDD {
 
     // Methode permettant la création d'un nouvel utlisateur
     public function newUser($bdd,$name, $username,$email,$password,$role) {
-
-        $passwordHash = $this->hashPassword($password);
-        $sql = "INSERT INTO user (firstname, lastname, email, password, role) VALUES (?,?,?,?,?)";
-        $query = $bdd->prepare($sql);
-        $query->execute([$name, $username,$email,$passwordHash,$role]);
-
+        $isExist = "SELECT * From user WHERE email = '$email'";
+        $isQuery = $bdd->query($isExist)->fetch();
+        if( $isQuery == false) {
+            $passwordHash = $this->hashPassword($password);
+            $sql = "INSERT INTO user (firstname, lastname, email, password, role) VALUES (?,?,?,?,?)";
+            $query = $bdd->prepare($sql);
+            $query->execute([$name, $username,$email,$passwordHash,$role]);
+        } else {
+            echo "L'email existe déjà";
+        }
     }
 
     // Methode permettant la connexion d'un utilisateur existant
