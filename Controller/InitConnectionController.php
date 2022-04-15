@@ -5,12 +5,7 @@ session_start();
 // Apelle de nos class
 require("../Model/BDDClass.php");
 require("../Model/StorageClass.php");
-
-/*************************************** Connexion BDD *************************************** */
-// On crée une nouvelle instance de BDD
-$bdd = new BDD();
-// On utilise la methode connection de notre class BDD pour pouvoir se connecter
-$bddConnection = $bdd->connection();
+require("../Controller/BDDController.php");
 
 /*************************************** Inscription Utilisateur *************************************** */
 $bdd->newUser($bddConnection,
