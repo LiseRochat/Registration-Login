@@ -50,7 +50,8 @@ class BDD {
 
     // Function validation data 
     public function validationData($data) {
-
+        // Trim suprime les caractères invisibles en début et fin de chaine
+        $data = trim($data);
 
     }
     
