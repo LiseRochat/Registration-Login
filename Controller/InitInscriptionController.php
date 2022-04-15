@@ -20,7 +20,7 @@ if(!empty($_POST)) {
             && strlen($password) >= 6
             && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-                $bdd->newUser($bddConnection, $fristname, $lastname, $email, $password, 1);
+                $bdd->newUser($bddConnection, $firstname, $lastname, $email, $password, 1);
 
         } else {
             echo "Errors !!";
