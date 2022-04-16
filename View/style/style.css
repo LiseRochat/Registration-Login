@@ -3,17 +3,26 @@ body {
     padding: 0;
     box-sizing: 0;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card {
     border: 5px solid salmon;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.62);
-    width: 60%;
+    background: rgba(250, 128, 114, 0.633);
+    width: 200px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
