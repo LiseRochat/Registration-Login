@@ -19,10 +19,28 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
 form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+input {
+    margin-bottom: 25px;
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.submit {
+    cursor: pointer;
+}
+
+.submit:hover {
+    color: white;
+    background: salmon;
 }

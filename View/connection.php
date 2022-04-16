@@ -16,7 +16,7 @@
             <input type="text" name="email" placeholder="email" id="email" required>
             <label for="password">Mot de Passe</label>
             <input type="password" name="password" placeholder="password" id="password" required>
-            <input type="submit" value="Connexion">
+            <input class="submit" type="submit" value="Connexion">
         </form>
     </div> 
 </body>
