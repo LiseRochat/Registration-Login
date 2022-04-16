@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fomrulaire de Connexion | PHP POO</title>
     <meta name="description" content="Formulaire de connexion en PHP POO sous le modèle MVC. Sauvegarde en Base de donnée.">
-    <link rel="stylesheet" href="View/style/style.css">
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <div class="card">
