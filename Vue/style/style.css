@@ -5,3 +5,10 @@ body {
     height: 100vh;
 }
 
+.card {
+    border: 2px solid salmon;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.62);
+    width: 60%;
+    margin: 0 auto;
+}
