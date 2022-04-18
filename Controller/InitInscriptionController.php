@@ -22,9 +22,12 @@ if(!empty($_POST)) {
             && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
                 $bdd->newUser($bddConnection, $firstname, $lastname, $email, $password, 1);
+                header('Status: 301 Moved Permanently", false, 301');
+                header("Location:../View/connection.php");
+                die();
 
         } else {
-            echo "Errors !!";
+            echo "Erreurs !!";
         }
     }
 }

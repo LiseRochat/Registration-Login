@@ -16,8 +16,7 @@ $user = $bdd->login($bddConnection, $_POST['password'], $_POST['email']);
 $sessionUserSignIng = new Storage();
 // On sauvegarde ses données dans la variable globale $_SESSION puis a l'aide de la methode de notre classe on récupère un tableau de donnée
 $sessionUserSignIng->storeUSerData($user);
-// On affiche ses données soit toutes soit une valeur en particulier
-var_dump($sessionUserSignIng->getUserData()['firstname']);
+
 header('Status: 301 Moved Permanently", false, 301');
 header("Location: ../view/home.php");
 die();
