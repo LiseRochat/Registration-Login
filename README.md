@@ -19,7 +19,12 @@
 ***
 
 ### General Info
-Develop a simple form of connection and registration with PHP and Wamp Server </br>
+Realization of a complete user account management in PHP (MVC / CRUD) 
+- Creation and validation of account by email
+- Login
+- Account management
+- Securing (Password, Session, Cookie)
+- Role Management
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
