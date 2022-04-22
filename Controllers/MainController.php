@@ -38,8 +38,6 @@ class Main {
 
      // page_js : tableau permettant d'ajouter des fichiers JS spécifiques
     public function page1() {
-        ToolBox::addMessageAlert("test");
-        ToolBox::addMessageAlert("test2");
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
             "page_title" => "Projet PHP MVC",
