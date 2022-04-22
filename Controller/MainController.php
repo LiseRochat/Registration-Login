@@ -40,12 +40,10 @@ class Main {
     public function page1() {
         ToolBox::addMessageAlert("test");
         ToolBox::addMessageAlert("test2");
-        $datas = $this->mainManager->getDatas();
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
             "page_title" => "Projet PHP MVC",
             "page_js" => ["page1.js"],
-            "datas" => $datas,
             "view" => "Views/page1.php",
             "template" => "Views/Common/template.php"
         ];
