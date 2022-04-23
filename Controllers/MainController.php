@@ -28,7 +28,7 @@ abstract class Main {
         $this->generatePage($data_page);
     }
 
-    public function pageErrors($message) {
+    protected function pageErrors($message) {
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
