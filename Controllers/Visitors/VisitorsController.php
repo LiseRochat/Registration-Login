@@ -7,7 +7,7 @@ class VisitorsController extends Main {
             "page_description" => "Strucuture de base d'un projet en php",
             "page_title" => "Projet PHP MVC",
             "page_css" => ["home.css"],
-            "view" => "Views/home.php",
+            "view" => "Views/Visitors/home.php",
             "template" => "Views/Common/template.php"
         ];
         $this->generatePage($data_page);
