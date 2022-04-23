@@ -7,8 +7,11 @@ class VisitorsController extends MainController {
     public function __construct() {
         $this->visitorManager = new VisitorsManager();
     }
+
     // Page Accueil
     public function home() {
+        $users = $this->visitorManager->getUsers();
+        print_r($users);
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
             "page_title" => "Projet PHP MVC",

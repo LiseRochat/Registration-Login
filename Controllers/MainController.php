@@ -14,12 +14,12 @@ abstract class MainController{
         require_once($template);
     }
 
-    protected function pageErrors($msg){
+    protected function pageErrors($message){
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
-            "msg" => $msg,
-            "view" => "./views/erreur.view.php",
+            "message" => $message,
+            "view" => "./views/errors.php",
             "template" => "views/common/template.php"
         ];
         $this->generatePage($data_page);
