@@ -15,6 +15,7 @@ class VisitorsController extends MainController {
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
             "page_title" => "Projet PHP MVC",
+            "users" => $users,
             "page_css" => ["home.css"],
             "view" => "Views/Visitors/home.php",
             "template" => "Views/Common/template.php"
