@@ -2,8 +2,8 @@
 session_start();
 // url complete depuis la racine du site (optionnel en cas de probleme pour accéder des ressources)
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS'])? "https" : "http")."://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
-require_once("./Controllers/MainController.php");
-$main = new Main();
+require_once("./Controllers/Visitors/VisitorsController.php");
+$visitorController = new VisitorsController();
 
 try {
     // Test si l'information index.php?page= est vide 
@@ -22,10 +22,10 @@ try {
     // On gère le premier niveau d'url
     switch($page) {
         case "accueil" :
-            $main->home();
+            $visitorController->home();
         break; 
         case "page1" :
-            $main->page1();
+            $visitorController->page1();
         break; 
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");

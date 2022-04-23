@@ -12,4 +12,9 @@ class VisitorsController extends Main {
         ];
         $this->generatePage($data_page);
     }
+
+    // Heritage
+    public function pageErrors($message) {
+        parent::pageErrors($message);
+    }
 }
