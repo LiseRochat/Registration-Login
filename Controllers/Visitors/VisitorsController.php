@@ -1,6 +1,6 @@
 <?php
 require_once("./Controllers/MainController.php");
-class VisitorsController extends Main {
+class VisitorsController extends MainController {
     // Page Accueil
     public function home() {
         $data_page = [
