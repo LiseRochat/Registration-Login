@@ -27,6 +27,8 @@ try {
         case "login" :
             $visitorController->login();
         break; 
+        case "validation_login" :
+        break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }

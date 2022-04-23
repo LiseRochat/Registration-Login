@@ -1,6 +1,6 @@
 <div class="card">
     <h1>Connexion</h1>
-    <form method="post" action="../Controller/InitConnectionController.php">
+    <form method="POST" action="validation_login">
         <label for="email">Email</label>
         <input type="text" name="email" placeholder="email" id="email" required>
         <label for="password">Mot de Passe</label>
