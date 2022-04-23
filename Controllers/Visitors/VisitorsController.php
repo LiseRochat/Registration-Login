@@ -1,6 +1,12 @@
 <?php
 require_once("./Controllers/MainController.php");
+require_once("./Models/Visitors/VisitorsModel.php");
 class VisitorsController extends MainController {
+    private $visitorManager;
+
+    public function __construct() {
+        $this->visitorManager = new VisitorsManager();
+    }
     // Page Accueil
     public function home() {
         $data_page = [
