@@ -3,7 +3,7 @@
 // Toutes les fonctions permettant de gérer les pages du projet
 
 require_once("Controllers/ToolBox.php");
-class Main {
+abstract class Main {
     
     
     protected function generatePage($data) {
