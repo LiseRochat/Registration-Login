@@ -13,8 +13,8 @@ class VisitorsController extends MainController {
         $users = $this->visitorManager->getUsers();
         print_r($users);
         $data_page = [
-            "page_description" => "Strucuture de base d'un projet en php",
-            "page_title" => "Projet PHP MVC",
+            "page_description" => "Gestion de connexion inscritpion d'un compte en PHP POO avec le modèle MVC",
+            "page_title" => "Connection | Inscription",
             "users" => $users,
             "page_css" => ["home.css"],
             "view" => "Views/Visitors/home.php",
@@ -23,6 +23,16 @@ class VisitorsController extends MainController {
         $this->generatePage($data_page);
     }
 
+    public function login() {
+        $data_page = [
+            "page_description" => "Page de connection d'un utilisateur inscrit sur le site",
+            "page_title" => "Connection",
+            "page_css" => ["style.css"],
+            "view" => "Views/Visitors/login.php",
+            "template" => "Views/Common/template.php"
+        ];
+        $this->generatePage($data_page);
+    }
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
