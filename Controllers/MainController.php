@@ -11,8 +11,8 @@ class Main {
     public function  __construct() {
         $this->mainManager = new MainManager();
     }
-    // Aucun autre fichier ne peut appeler cette fonction
-    private function generatePage($data) {
+    
+    protected function generatePage($data) {
         // La fonction extract permet de decomposer un tableau en plusieurs variable
         extract($data);
         ob_start();
