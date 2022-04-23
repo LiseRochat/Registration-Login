@@ -1,8 +1,5 @@
 <?php
-// Pour pouvoir utiliser la variable globale de php $_SESSION
-session_start();
 
-// Apelle de nos class
 require("../Model/BDDClass.php");
 require("../Model/StorageClass.php");
 require("../Controller/BDDController.php");
