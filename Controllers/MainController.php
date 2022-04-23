@@ -2,15 +2,9 @@
 
 // Toutes les fonctions permettant de gérer les pages du projet
 
-require_once("Models/MainManager.php");
 require_once("Controllers/ToolBox.php");
 class Main {
     
-    private $mainManager;
-
-    public function  __construct() {
-        $this->mainManager = new MainManager();
-    }
     
     protected function generatePage($data) {
         // La fonction extract permet de decomposer un tableau en plusieurs variable
@@ -21,16 +15,7 @@ class Main {
         require($template);
     }
 
-    public function home() {
-        $data_page = [
-            "page_description" => "Strucuture de base d'un projet en php",
-            "page_title" => "Projet PHP MVC",
-            "page_css" => ["home.css"],
-            "view" => "Views/home.php",
-            "template" => "Views/Common/template.php"
-        ];
-        $this->generatePage($data_page);
-    }
+
 
     public function page1() {
         $data_page = [
