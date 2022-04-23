@@ -3,6 +3,7 @@ session_start();
 // url complete depuis la racine du site (optionnel en cas de probleme pour accéder des ressources)
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS'])? "https" : "http")."://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 require_once("./Controllers/Visitors/VisitorsController.php");
+require_once("./Controllers/ToolBox.php");
 $visitorController = new VisitorsController();
 
 try {
@@ -28,6 +29,12 @@ try {
             $visitorController->login();
         break; 
         case "validation_login" :
+            if(!empty($_POST['email']) && !empty($_POST['password'])) {
+                $visitorController->validation_login();
+            } else {
+                ToolBox::addMessageAlert("Email out mot de passe non renseigné");
+                header('Location:'.URL."login");
+            }
         break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
