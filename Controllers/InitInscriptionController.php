@@ -1,5 +1,5 @@
 <?php
-// Apelle de nos class
+
 require("../Model/BDDClass.php");
 require("../Model/StorageClass.php");
 require("../Controller/BDDController.php");

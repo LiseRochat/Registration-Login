@@ -1,8 +1,6 @@
 <?php 
-/* 
-    Création d'un objet Main
-    Une fonction par demande de l'utilisateur
-*/
+
+// Toutes les fonctions permettant de gérer les pages du projet
 
 require_once("Models/MainManager.php");
 require_once("Controllers/ToolBox.php");
@@ -18,13 +16,11 @@ class Main {
         // La fonction extract permet de decomposer un tableau en plusieurs variable
         extract($data);
         ob_start();
-        // $view = $data['view']
         require_once($view);
         $page_content = ob_get_clean();
         require($template);
     }
 
-    // page_css : tableau permettant d'ajouter des fichiers CSS spécifiques
     public function home() {
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
@@ -36,7 +32,6 @@ class Main {
         $this->generatePage($data_page);
     }
 
-     // page_js : tableau permettant d'ajouter des fichiers JS spécifiques
     public function page1() {
         $data_page = [
             "page_description" => "Strucuture de base d'un projet en php",
