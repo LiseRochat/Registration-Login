@@ -1,6 +1,6 @@
 <div class="card">
     <h1>Connexion</h1>
-    <form method="POST" action="validation_login">
+    <form method="POST" action="validationLogin">
         <label for="email">Email</label>
         <input type="text" name="email" placeholder="email" id="email" required>
         <label for="password">Mot de Passe</label>
