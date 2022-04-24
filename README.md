@@ -60,6 +60,9 @@ git clone https://github.com/LiseRochat/Registration-Login
  ```
   localhost/Registration-Login
  ```
+ 7. If you just want test connection use :
+    **email** : test@gmail.com
+    **password** : test
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
