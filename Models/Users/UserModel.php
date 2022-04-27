@@ -60,4 +60,16 @@ class UserManager extends MainManager {
         $stmt->closeCursor();
         return $isAdd;
     }
+
+    public function bddValidationMailAccount($email, $key) {
+        $req ="UPDATE user set isValid = 1 WHERE email = :email and keyValidation = :key";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":key", $key, PDO::PARAM_INT);
+        $stmt->execute();
+        // On conserve le resultat de la requete : si les données sont enregistré isAdd = true sinon false
+        $isModification = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isModification;
+    }
 }
