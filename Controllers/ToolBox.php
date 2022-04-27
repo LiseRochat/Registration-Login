@@ -7,7 +7,7 @@ class ToolBox {
     }
 
     public static function sendMail($receveur, $object, $message) {
-        $headers = "From: liserochat@live.fr";
+        $headers = "From: rochatlise17@gmail.com";
         if(mail($receveur, $object, $message, $headers)) {
             ToolBox::addMessageAlert("Mail envoyé");
         } else {

@@ -64,6 +64,7 @@ try {
             $userController->sendBackMailValidation($url[1]);
         break;
         case "validationMail" :
+            $userManager->validationMailAccount($urm[1],$url[2]);
             break;
         case "compte" :
             if(Security::isConnected()) {

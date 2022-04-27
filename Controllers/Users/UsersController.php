@@ -81,6 +81,15 @@ class UsersController extends MainController {
         header("Location:".URL."login");
     }
 
+    public function validationMailAccount($email, $key) {
+        if($this->UserManager->bddValidationMailAccount($email, $key)) {
+            ToolBox::addMessageAlert("Le compte à été activé !");
+            header("Location:".URL."compte/profil");
+        } else {
+            ToolBox::addMessageAlert("Le compte n'a pas  été activé !");
+            header("Location:".URL."creerCompte");
+        }
+    }
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
