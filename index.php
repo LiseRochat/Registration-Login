@@ -54,7 +54,7 @@ try {
                 $firstname = Security::secureHTML($_POST['firstname']);
                 $lastname = Security::secureHTML($_POST['lastname']);
                 $password = Security::secureHTML($_POST['password']);
-                
+                $userController->validationLogin($email, $firstname, $lastname, $password);
             } else {
                 ToolBox::addMessageAlert("Les quatres informations sont obligatoire");
                 header('Location:'.URL."creerCompte");
