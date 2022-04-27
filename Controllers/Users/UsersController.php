@@ -28,7 +28,7 @@ class UsersController extends MainController {
     }
     
     public function profil() {
-        $datas = $this->UserManager->getUserInformation($_SESSION['profil']['login']);
+        $datas = $this->UserManager->getUserInformation($_SESSION['profil']['email']);
     }
     // Heritage
     public function pageErrors($message) {
