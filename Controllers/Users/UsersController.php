@@ -37,6 +37,7 @@ class UsersController extends MainController {
             "page_title" => "Mon Profil",
             "user" => $datas,
             "page_css" => ["home.css"],
+            "page_js" => ["profil.js"],
             "view" => "Views/Users/profil.php",
             "template" => "Views/Common/template.php"
         ];
