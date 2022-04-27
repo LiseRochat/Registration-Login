@@ -75,6 +75,12 @@ class UsersController extends MainController {
         ToolBox::sendMail($email,$object,$message);
     }
 
+    public function sendBackMailValidation($email) {
+        $user = $this->UserManager->getUserInformation($email);
+        $this->sendMailValidation($user['firstname'], $email, $user['key']);
+        header("Location:".URL."login");
+    }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
