@@ -49,14 +49,15 @@ class UsersController extends MainController {
 
     public function validationInscription($email, $firstname, $lastname, $password) {
         // test si l'email n'est pas déja existant
-        if($this->userManager->verifEmailAvailable($email)) {
+        if($this->UserManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
-            if($this->userManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
-
+            if($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
+                ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
+                header("Location:".URL."login");
             } else {
                 ToolBox::addMessageAlert("Erreur lors de la création du compte, recommencez !");
-            header("Location:".URL."creerCompte");
+                header("Location:".URL."creerCompte");
             }
         } else {
             ToolBox::addMessageAlert("L'Email est déjà utilisé");
