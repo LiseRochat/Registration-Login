@@ -47,6 +47,9 @@ class UsersController extends MainController {
         header("Location:".URL."accueil");
     }
 
+    public function validationInscription($email, $firstname, $lastname, $password) {
+
+    }
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
