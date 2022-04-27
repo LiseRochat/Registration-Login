@@ -45,6 +45,20 @@ try {
             $visitorController->createAccount();
             break;
         case "validationInscription" :
+            if( !empty($_POST['email'])
+                && !empty($_POST['firstname'])
+                && !empty($_POST['lastname'])
+                && !empty($_POST['password'])
+            ) {
+                $email = Security::secureHTML($_POST['email']);
+                $firstname = Security::secureHTML($_POST['firstname']);
+                $lastname = Security::secureHTML($_POST['lastname']);
+                $password = Security::secureHTML($_POST['password']);
+                $userController->validationInscription($email, $firstname, $lastname, $password);
+            } else {
+                ToolBox::addMessageAlert("Les quatres informations sont obligatoire");
+                header('Location:'.URL."creerCompte");
+            }
             break;
         case "compte" :
             if(Security::isConnected()) {
