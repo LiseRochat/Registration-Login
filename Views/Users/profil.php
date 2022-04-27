@@ -12,6 +12,6 @@
     <form method="POST" action="<?= URL; ?>compte/validationMoficationMail">
         <label for="mail">Mail :</label>
         <input type="mail" name="mail" value="<?= $user['email']; ?>"/>
-        <button id="btnValidationModificationMail">Valider</button>
+        <button type="submit" id="btnValidationModificationMail">Valider</button>
     </form>
 </div>
