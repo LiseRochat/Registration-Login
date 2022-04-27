@@ -39,4 +39,9 @@ class UserManager extends MainManager {
         // Si le compte est validé on retourne vrais sinon faux 
         return  $resultat;
     }
+
+    public function verifEmailAvailable($email) {
+        $user = $this->getUserInformation($email);
+        return empty($user);
+    }
 }
