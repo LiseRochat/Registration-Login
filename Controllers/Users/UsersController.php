@@ -26,7 +26,10 @@ class UsersController extends MainController {
             header("Location:".URL."login");
         }
     }
-  
+    
+    public function profil() {
+        $datas = $this->UserManager->getUserInformation($_SESSION['profil']['login']);
+    }
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
