@@ -53,6 +53,7 @@ class UsersController extends MainController {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
             if($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
+                $this->sendMailValidation($firstname, $email, $key);
                 ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
                 header("Location:".URL."login");
             } else {
@@ -63,6 +64,12 @@ class UsersController extends MainController {
             ToolBox::addMessageAlert("L'Email est déjà utilisé");
             header("Location:".URL."creerCompte");
         }
+    }
+
+    public function sendMailValidation($firstname, $email, $key) {
+        $urlVerification = URL."validationMail/".$email."/".$key;
+        $object = "Creation de compte sur le site";
+        $message =" Pour valider votre compte veuillez cliquez sur le lien suivant : ".$urlVerification;
     }
 
     // Heritage
