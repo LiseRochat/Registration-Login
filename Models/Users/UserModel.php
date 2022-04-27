@@ -44,4 +44,20 @@ class UserManager extends MainManager {
         $user = $this->getUserInformation($email);
         return empty($user);
     }
+
+    public function dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key) {
+        $req = "INSERT INTO user (firstname, lastname, email, password, role, avatar, isValid, keyValidation,)
+                VALUES (:firstname, :lastname, :email, :password, 'utilisateur', '', 0, :key )";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+        $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":password", $passwordCrypte, PDO::PARAM_STR);
+        $stmt->bindValue(":key", $key, PDO::PARAM_INT);
+        $stmt->execute();
+        // On conserve le resultat de la requete : si les données sont enregistré isAdd = true sinon false
+        $isAdd = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isAdd;
+    }
 }

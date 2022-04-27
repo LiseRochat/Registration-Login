@@ -52,6 +52,12 @@ class UsersController extends MainController {
         if($this->userManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
+            if($this->userManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
+
+            } else {
+                ToolBox::addMessageAlert("Erreur lors de la création du compte, recommencez !");
+            header("Location:".URL."creerCompte");
+            }
         } else {
             ToolBox::addMessageAlert("L'Email est déjà utilisé");
             header("Location:".URL."creerCompte");
