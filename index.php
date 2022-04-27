@@ -41,6 +41,13 @@ try {
                 header('Location:'.URL."login");
             }
         break;
+        case "compte" :
+            switch($url[1]) {
+                case "profil" : 
+                    $UsersController->profil();
+                break;
+                default : throw new Exception("La page n'existe pas !");
+            }
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }
