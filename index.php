@@ -50,7 +50,11 @@ try {
                 && !empty($_POST['lastname'])
                 && !empty($_POST['password'])
             ) {
-
+                $email = Security::secureHTML($_POST['email']);
+                $firstname = Security::secureHTML($_POST['firstname']);
+                $lastname = Security::secureHTML($_POST['lastname']);
+                $password = Security::secureHTML($_POST['password']);
+                
             } else {
                 ToolBox::addMessageAlert("Les quatres informations sont obligatoire");
                 header('Location:'.URL."creerCompte");
