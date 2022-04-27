@@ -77,6 +77,9 @@ try {
                     case "validationMoficationMail" :
                         $userController->validationEditMail(Security::secureHTML($_POST['mail']));
                     break;
+                    case "modificationMotDePasse" :
+                        $userController->editPassword();
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
