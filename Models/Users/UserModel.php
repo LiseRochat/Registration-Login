@@ -76,6 +76,7 @@ class UserManager extends MainManager {
     public function bdEditMailUser($email, $emailEdit) {
         $req ="UPDATE user set email = :emailEdit WHERE email = :email";
         $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
         $stmt->bindValue(":emailEdit", $emailEdit, PDO::PARAM_STR);
         $stmt->execute();
         // On conserve le resultat de la requete : si les données sont enregistré isAdd = true sinon false
