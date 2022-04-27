@@ -91,6 +91,11 @@ class UsersController extends MainController {
             header("Location:".URL."creerCompte");
         }
     }
+
+    public function validationEditMail($email) {
+        $this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email);
+    }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
