@@ -42,6 +42,7 @@ try {
             }
         break;
         case "compte" :
+            if()
             switch($url[1]) {
                 case "profil" : $userController->profil();
                 break;
