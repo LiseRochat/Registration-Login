@@ -101,6 +101,16 @@ class UsersController extends MainController {
         header("Location:".URL."compte/profil");
     }
 
+    public function editPassword() {
+        $data_page = [
+            "page_description" => "Page de modification du mot de passe",
+            "page_title" => "Changer moin mot de passe",
+            "view" => "Views/Users/editPassword.php",
+            "template" => "Views/Common/template.php"
+        ];
+        $this->generatePage($data_page);
+    }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
