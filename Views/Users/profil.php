@@ -8,6 +8,9 @@
         </svg>
     </button>
 </div>
+<div>
+    <a href="<?= URL; ?>compte/modificationMotDePasse">Changer le mot de passe</a>
+</div>
 <div id="modificationMail" class="d-none">
     <form method="POST" action="<?= URL; ?>compte/validationMoficationMail">
         <label for="mail">Mail :</label>
