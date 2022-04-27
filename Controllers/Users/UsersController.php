@@ -70,6 +70,7 @@ class UsersController extends MainController {
         $urlVerification = URL."validationMail/".$email."/".$key;
         $object = "Creation de compte sur le site";
         $message =" Pour valider votre compte veuillez cliquez sur le lien suivant : ".$urlVerification;
+        ToolBox::sendMail($email,$object,$message);
     }
 
     // Heritage
