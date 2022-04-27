@@ -18,11 +18,11 @@ class UsersController extends MainController {
                 ];
                 header("Location:".URL."compte/profil");
             } else {
-                ToolBox::addMessageAlert("Le compte".$email." n'a pas été activé par mail.");
+                ToolBox::addMessageAlert("Le compte ".$email." n'a pas été activé par mail.");
                 header("Location:".URL."login");
             }
         } else {
-            ToolBox::addMessageAlert("Combinaison Mogon / Mot de passe non valide");
+            ToolBox::addMessageAlert("Combinaison Email / Mot de passe non valide");
             header("Location:".URL."login");
         }
     }

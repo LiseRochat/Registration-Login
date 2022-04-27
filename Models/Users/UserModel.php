@@ -26,6 +26,6 @@ class UserManager extends MainManager {
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         // Si le compte est validé on retourne vrais sinon faux 
-        return ((int)$resultat['isValid'] === 0) ? true : false;
+        return ((int)$resultat['isValid'] === 1) ? true : false;
     }
 }
