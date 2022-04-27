@@ -60,6 +60,8 @@ try {
                 header('Location:'.URL."creerCompte");
             }
             break;
+        case "validationMail" :
+            break;
         case "compte" :
             if(Security::isConnected()) {
                 switch($url[1]) {
