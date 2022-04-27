@@ -2,3 +2,4 @@
 <div id="mail">
     Mail : <?= $user['email']; ?>
 </div>
+<?= $_SESSION['profil']['role']; ?>

@@ -29,6 +29,7 @@ class UsersController extends MainController {
     
     public function profil() {
         $datas = $this->UserManager->getUserInformation($_SESSION['profil']['email']);
+        $_SESSION['profil']["role"] = $datas['role'];
         $data_page = [
             "page_description" => "Page de Profil",
             "page_title" => "Mon Profil",
