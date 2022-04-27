@@ -50,12 +50,14 @@ class UsersController extends MainController {
     public function validationInscription($email, $firstname, $lastname, $password) {
         // test si l'email n'est pas déja existant
         if($this->userManager->verifEmailAvailable($email)) {
-
+            $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
+            $key = rand(0,9999);
         } else {
             ToolBox::addMessageAlert("L'Email est déjà utilisé");
             header("Location:".URL."creerCompte");
         }
     }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
