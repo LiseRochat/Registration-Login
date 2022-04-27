@@ -1,6 +1,6 @@
 ### Paramétrer serveur local pour envoyer des mails
 1. Avoir une boite mail **gmail**
-2. Utilisation de la fonction **mail()** de PHP 
+2. Utilisation de la fonction **mail()** de PHP 7.33.3
 3. Configuration de wamp
 
 ## Fichier Fake Send Mail
@@ -22,8 +22,11 @@ force_recipient=
 hostname=
 
 ## Fichier php.ini
-Editez le fichier **php.ini** et chercher la varaible **sendmail_path** pour y indiquez le chemin vers l'éxécutable sendmail.exe.
-
+Editez le fichier **php.ini** et chercher la varaible **[mail function]** pour y indiquez le chemin vers l'éxécutable sendmail.exe :
+SMTP=smtp.gmail.com
+smtp_port=587
+sendmail_from = VotreGmailId@gmail.com
+sendmail_path = "\"C:\wamp64\sendmail\sendmail.exe\" -t"
 
 ## Redémarrez wamp
 Redémarrez wamp et le tour est joué !
