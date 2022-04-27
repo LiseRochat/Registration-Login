@@ -4,7 +4,7 @@
         <?php if (empty($_SESSION['profil'])) :?>
         <li><a href="<?php echo URL; ?>login">Se connecter</a></li>
         <?php else : ?>
-        <li><a href="<?php echo URL; ?>compt/profil">Mon Profil</a></li>
+        <li><a href="<?php echo URL; ?>compte/profil">Mon Profil</a></li>
         <?php endif; ?>
     </ul>
 </nav>

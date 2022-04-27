@@ -43,8 +43,7 @@ try {
         break;
         case "compte" :
             switch($url[1]) {
-                case "profil" : 
-                    $UsersController->profil();
+                case "profil" : $userController->profil();
                 break;
                 default : throw new Exception("La page n'existe pas !");
             }
