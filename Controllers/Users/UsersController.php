@@ -93,7 +93,12 @@ class UsersController extends MainController {
     }
 
     public function validationEditMail($email) {
-        $this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email);
+        if($this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
+            ToolBox::addMessageAlert("La modification est effectué !");
+        } else {
+            ToolBox::addMessageAlert("La modificatio  n'as pas put être effectuée !");
+        }
+        header("Location:".URL."compte/profil");
     }
 
     // Heritage
