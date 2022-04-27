@@ -8,7 +8,7 @@ class UserManager extends MainManager {
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
-        $resultat = $stmt->fetc(PDO::FETCH_ASSOC);
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $resultat['password'];
     }
@@ -23,7 +23,7 @@ class UserManager extends MainManager {
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
-        $resultat = $stmt->fetc(PDO::FETCH_ASSOC);
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         // Si le compte est validé on retourne vrais sinon faux 
         return ((int)$resultat['isValid'] === 0) ? true : false;

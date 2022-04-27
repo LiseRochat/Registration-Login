@@ -3,15 +3,15 @@ require_once("./Controllers/MainController.php");
 require_once("./Models/Users/UserModel.php");
 
 class UsersController extends MainController {
-    private $userManager;
+    private $UserManager;
 
     public function __construct() {
-        $this->userManager = new UserManager();
+        $this->UserManager = new UserManager();
     }
 
     public function validationLogin($email, $password) {
         if($this->UserManager->isValide($email, $password)) {
-            if($this->userManager->isAccountValid($email)) {
+            if($this->UserManager->isAccountValid($email)) {
                 ToolBox::addMessageAlert("Bon retour sur le site ".$email);
                 $_SESSION['profil'] = [
                     'email' => $email,
