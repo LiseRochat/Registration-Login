@@ -41,12 +41,17 @@ try {
                 header('Location:'.URL."login");
             }
         break;
+        case "creerCompte" : 
+            $visitorController->createAccount();
+            break;
         case "compte" :
             if(Security::isConnected()) {
                 switch($url[1]) {
-                    case "profil" : $userController->profil();
+                    case "profil" : 
+                        $userController->profil();
                     break;
-                    case "deconnexion" : $userController->deconnection();
+                    case "deconnexion" : 
+                        $userController->deconnection();
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
