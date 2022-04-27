@@ -10,12 +10,9 @@ class VisitorsController extends MainController {
 
     // Page Accueil
     public function home() {
-        $users = $this->visitorManager->getUsers();
-        print_r($users);
         $data_page = [
             "page_description" => "Gestion de connexion inscritpion d'un compte en PHP POO avec le modèle MVC",
             "page_title" => "Connection | Inscription",
-            "users" => $users,
             "page_css" => ["home.css"],
             "view" => "Views/Visitors/home.php",
             "template" => "Views/Common/template.php"

@@ -40,6 +40,13 @@ class UsersController extends MainController {
         ];
         $this->generatePage($data_page);
     }
+
+    public function deconnection() {
+        // On vide la variable $_SESSION
+        unset($_SESSION['profil']);
+        header("Location:".URL."accueil");
+    }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);

@@ -45,6 +45,7 @@ try {
             switch($url[1]) {
                 case "profil" : $userController->profil();
                 break;
+                case "deconnexion" : $userController->deconnection();
                 default : throw new Exception("La page n'existe pas !");
             }
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
