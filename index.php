@@ -74,6 +74,9 @@ try {
                     break;
                     case "deconnexion" : 
                         $userController->deconnection();
+                    case "validationMoficationMail" :
+                        $userController->validationEditMail(Security::secureHTML($_POST['mail']));
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
