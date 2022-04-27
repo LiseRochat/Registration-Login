@@ -18,7 +18,9 @@ class UsersController extends MainController {
                 ];
                 header("Location:".URL."compte/profil");
             } else {
-                ToolBox::addMessageAlert("Le compte ".$email." n'a pas été activé par mail.");
+                $msg = "Le compte ".$email." n'a pas été activé par mail.";
+                $msg .= "<a href='sendBackMailValidation/.$email.'> Renvoyez le mail de validation</a>";
+                ToolBox::addMessageAlert($msg);
                 header("Location:".URL."login");
             }
         } else {
@@ -53,6 +55,7 @@ class UsersController extends MainController {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
             if($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
+                $this->sendMailValidation($firstname, $email, $key);
                 ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
                 header("Location:".URL."login");
             } else {
@@ -63,6 +66,19 @@ class UsersController extends MainController {
             ToolBox::addMessageAlert("L'Email est déjà utilisé");
             header("Location:".URL."creerCompte");
         }
+    }
+
+    public function sendMailValidation($firstname, $email, $key) {
+        $urlVerification = URL."validationMail/".$email."/".$key;
+        $object = "Creation de compte sur le site";
+        $message =" Pour valider votre compte veuillez cliquez sur le lien suivant : ".$urlVerification;
+        ToolBox::sendMail($email,$object,$message);
+    }
+
+    public function sendBackMailValidation($email) {
+        $user = $this->UserManager->getUserInformation($email);
+        $this->sendMailValidation($user['firstname'], $email, $user['key']);
+        header("Location:".URL."login");
     }
 
     // Heritage
