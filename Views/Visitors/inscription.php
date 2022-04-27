@@ -1,6 +1,6 @@
 <div class="card">
     <h1>Inscription</h1>
-    <form method="post" action="../Controller/InitInscriptionController.php">
+    <form method="post" action="validationInscription">
         <label for="firstname">Prenom</label>
         <input type="text" name="firstname" placeholder="votre prénom" id="firstname" required maxlength=30 pattern="^[A-Za-z '-]+$">
         <label for="lastname">Nom</label>

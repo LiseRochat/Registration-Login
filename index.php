@@ -44,6 +44,8 @@ try {
         case "creerCompte" : 
             $visitorController->createAccount();
             break;
+        case "validationInscription" :
+            break;
         case "compte" :
             if(Security::isConnected()) {
                 switch($url[1]) {
