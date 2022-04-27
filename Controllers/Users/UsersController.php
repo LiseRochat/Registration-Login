@@ -18,7 +18,9 @@ class UsersController extends MainController {
                 ];
                 header("Location:".URL."compte/profil");
             } else {
-                ToolBox::addMessageAlert("Le compte ".$email." n'a pas été activé par mail.");
+                $msg = "Le compte ".$email." n'a pas été activé par mail.";
+                $msg .= "<a href='sendBackMailValidation/.$email.'> Renvoyez le mail de validation</a>";
+                ToolBox::addMessageAlert($msg);
                 header("Location:".URL."login");
             }
         } else {
