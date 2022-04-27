@@ -30,6 +30,17 @@ class VisitorsController extends MainController {
         ];
         $this->generatePage($data_page);
     }
+
+    public function createAccount() {
+        $data_page = [
+            "page_description" => "Page d'inscription pour un nouvel utilisateur arrivant sur le site",
+            "page_title" => "Inscription",
+            "page_css" => ["style.css"],
+            "view" => "Views/Visitors/inscription.php",
+            "template" => "Views/Common/template.php"
+        ];
+        $this->generatePage($data_page);
+    }
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
