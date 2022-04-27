@@ -29,7 +29,15 @@ class UsersController extends MainController {
     
     public function profil() {
         $datas = $this->UserManager->getUserInformation($_SESSION['profil']['email']);
-        print_r($datas);
+        $data_page = [
+            "page_description" => "Page de Profil",
+            "page_title" => "Mon Profil",
+            "user" => $datas,
+            "page_css" => ["home.css"],
+            "view" => "Views/Users/profil.php",
+            "template" => "Views/Common/template.php"
+        ];
+        $this->generatePage($data_page);
     }
     // Heritage
     public function pageErrors($message) {
