@@ -68,6 +68,18 @@ git clone https://github.com/LiseRochat/Registration-Login
 
 ***
 
+### RoadMap
+- [x] Connection
+- [x] Inscription
+- [x] Edit Profil
+    - [x] Email
+    - [x] Password
+    - [ ] Avatar
+    - [ ] Delete Account
+- [ ] Admin
+
+***
+
 ### Contributing
 If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement".
 
