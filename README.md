@@ -12,8 +12,9 @@
 3. [Visual](#visual)
 4. [Technologies](#technologies)
 5. [Installation](#installation)
-6. [Contributing](#contributing)
-7. [Contact](#contact)
+6. [Road Map](#roadmap)
+7. [Contributing](#contributing)
+8. [Contact](#contact)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
