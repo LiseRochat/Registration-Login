@@ -116,7 +116,8 @@ class UsersController extends MainController {
     public function validationEditPassword($oldPassword, $newPassword, $newPasswordConf) {
         if($newPassword === $newPasswordConf) {
             if($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
-                
+               $passwordSecure = password_hash($newPassword, PASSWORD_DEFAULT);
+              
             } else {
                 ToolBox::addMessageAlert("La combinaison email et mots de passe ne correspondent pas !");
                 header("Location:".URL."compte/modificationMotDePasse");
