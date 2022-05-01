@@ -36,7 +36,7 @@ class UsersController extends MainController {
             "page_description" => "Page de Profil",
             "page_title" => "Mon Profil",
             "user" => $datas,
-            "page_css" => ["home.css"],
+            "page_css" => ["d-none.css"],
             "page_js" => ["profil.js"],
             "view" => "Views/Users/profil.php",
             "template" => "Views/Common/template.php"
@@ -106,6 +106,7 @@ class UsersController extends MainController {
             "page_description" => "Page de modification du mot de passe",
             "page_title" => "Changer moin mot de passe",
             "page_js" => ['password.js'],
+            "page_css" => ["d-none.css"],
             "view" => "Views/Users/editPassword.php",
             "template" => "Views/Common/template.php"
         ];
