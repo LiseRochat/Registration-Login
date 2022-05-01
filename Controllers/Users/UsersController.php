@@ -36,7 +36,7 @@ class UsersController extends MainController {
             "page_description" => "Page de Profil",
             "page_title" => "Mon Profil",
             "user" => $datas,
-            "page_css" => ["home.css"],
+            "page_css" => ["d-none.css"],
             "page_js" => ["profil.js"],
             "view" => "Views/Users/profil.php",
             "template" => "Views/Common/template.php"
@@ -96,7 +96,7 @@ class UsersController extends MainController {
         if($this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
             ToolBox::addMessageAlert("La modification est effectué !");
         } else {
-            ToolBox::addMessageAlert("La modificatio  n'as pas put être effectuée !");
+            ToolBox::addMessageAlert("La modification n'as pas put être effectuée !");
         }
         header("Location:".URL."compte/profil");
     }
@@ -105,10 +105,34 @@ class UsersController extends MainController {
         $data_page = [
             "page_description" => "Page de modification du mot de passe",
             "page_title" => "Changer moin mot de passe",
+            "page_js" => ['password.js'],
+            "page_css" => ["d-none.css"],
             "view" => "Views/Users/editPassword.php",
             "template" => "Views/Common/template.php"
         ];
         $this->generatePage($data_page);
+    }
+
+    public function validationEditPassword($oldPassword, $newPassword, $newPasswordConf) {
+        if($newPassword === $newPasswordConf) {
+            if($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
+               $passwordSecure = password_hash($newPassword, PASSWORD_DEFAULT);
+              if($this->UserManager->bdModificationPassword($_SESSION['profil']['email'],$passwordSecure )) {
+                ToolBox::addMessageAlert("La modification du mots de passe à été effectuée!");
+                header("Location:".URL."compte/profil");
+              } else {
+                ToolBox::addMessageAlert("La modification à échouée !");
+                header("Location:".URL."compte/modificationMotDePasse");
+              }
+            } else {
+                ToolBox::addMessageAlert("La combinaison email et mots de passe ne correspondent pas !");
+                header("Location:".URL."compte/modificationMotDePasse");
+            }
+
+        } else {
+            ToolBox::addMessageAlert("Les mots de passes ne correspondent pas !");
+            header("Location:".URL."compte/modificationMotDePasse");
+        }
     }
 
     // Heritage
