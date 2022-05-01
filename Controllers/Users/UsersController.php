@@ -45,13 +45,11 @@ class UsersController extends MainController {
     }
 
     public function deconnection() {
-        // On vide la variable $_SESSION
         unset($_SESSION['profil']);
         header("Location:".URL."accueil");
     }
 
     public function validationInscription($email, $firstname, $lastname, $password) {
-        // test si l'email n'est pas déja existant
         if($this->UserManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
@@ -128,7 +126,6 @@ class UsersController extends MainController {
                 ToolBox::addMessageAlert("La combinaison email et mots de passe ne correspondent pas !");
                 header("Location:".URL."compte/modificationMotDePasse");
             }
-
         } else {
             ToolBox::addMessageAlert("Les mots de passes ne correspondent pas !");
             header("Location:".URL."compte/modificationMotDePasse");
