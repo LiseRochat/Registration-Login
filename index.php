@@ -81,6 +81,16 @@ try {
                         $userController->editPassword();
                     break;
                     case "validationModificationMotDePasse" :
+                        if(!empty($_POST['password']) && !empty($_POST['newPassword']) && !empty($_POST['newPasswordConf']) ) {
+                            $oldPassword = Security::secureHTML($_POST['password']);
+                            $newPassword = Security::secureHTML($_POST['newPassword']);
+                            $newPasswordConf = Security::secureHTML($_POST['newPasswordConf']);
+                            $userController->validationEditPassword($oldPassword, $newPassword, $newPasswordConf);   
+                        } else {
+                            ToolBox::addMessageAlert("Vous navez pas renseignez toutes les informations");
+                            header('Location:'.URL."compte/modificationMotDePasse");
+                        }
+                        
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
