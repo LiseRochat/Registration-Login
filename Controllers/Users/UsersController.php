@@ -105,6 +105,7 @@ class UsersController extends MainController {
         $data_page = [
             "page_description" => "Page de modification du mot de passe",
             "page_title" => "Changer moin mot de passe",
+            "page_js" => ['password.js'],
             "view" => "Views/Users/editPassword.php",
             "template" => "Views/Common/template.php"
         ];

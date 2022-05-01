@@ -80,6 +80,8 @@ try {
                     case "modificationMotDePasse" :
                         $userController->editPassword();
                     break;
+                    case "validationModificationMotDePasse" :
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
