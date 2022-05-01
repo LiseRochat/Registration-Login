@@ -7,3 +7,7 @@ btnModificationMail.addEventListener("click", function(){
     divMail.classList.add("d-none");
     divModificationMail.classList.remove("d-none");
 })
+
+document.querySelector("#btnDeleteAccount").addEventListener("click", function(){
+    document.querySelector("#deleteAccount").classList.remove("d-none");
+})
