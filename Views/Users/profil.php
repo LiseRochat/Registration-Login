@@ -11,6 +11,9 @@
 <div>
     <a href="<?= URL; ?>compte/modificationMotDePasse">Changer le mot de passe</a>
 </div>
+<div>
+    <button id="btnDeleteAccount">Supprimer mon compte</button>
+</div>
 <div id="modificationMail" class="d-none">
     <form method="POST" action="<?= URL; ?>compte/validationMoficationMail">
         <label for="mail">Mail :</label>
