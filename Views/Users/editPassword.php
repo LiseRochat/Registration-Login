@@ -8,7 +8,7 @@
         <input type="password" name="newPassword" placeholder="Nouveau Mot de Passe" id="newPassword" required>
         <label for="newPasswordConf">Confirmez votre Nouveau Mot de Passe</label>
         <input type="password" name="newPasswordConf" placeholder="Nouveau Mot de Passe" id="newPasswordConf" required>
-        <div id="error" class="alert">Les Password ne correspondent pas.</div>
+        <div id="error" class="alert">Les mots de passe ne correspondent pas.</div>
         <input id="btnValidation" type="submit" value="Valider" disabled>
     </form>
 </div> 

@@ -96,7 +96,7 @@ class UsersController extends MainController {
         if($this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
             ToolBox::addMessageAlert("La modification est effectué !");
         } else {
-            ToolBox::addMessageAlert("La modificatio  n'as pas put être effectuée !");
+            ToolBox::addMessageAlert("La modification n'as pas put être effectuée !");
         }
         header("Location:".URL."compte/profil");
     }
@@ -111,6 +111,21 @@ class UsersController extends MainController {
             "template" => "Views/Common/template.php"
         ];
         $this->generatePage($data_page);
+    }
+
+    public function validationEditPassword($oldPassword, $newPassword, $newPasswordConf) {
+        if($newPassword === $newPasswordConf) {
+            if($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
+                
+            } else {
+                ToolBox::addMessageAlert("La combinaison email et mots de passe ne correspondent pas !");
+                header("Location:".URL."compte/modificationMotDePasse");
+            }
+
+        } else {
+            ToolBox::addMessageAlert("Les mots de passes ne correspondent pas !");
+            header("Location:".URL."compte/modificationMotDePasse");
+        }
     }
 
     // Heritage
