@@ -84,4 +84,16 @@ class UserManager extends MainManager {
         $stmt->closeCursor();
         return $isModification;
     }
+
+    public function bdModificationPassword($email,$passwordEdit ) {
+        $req ="UPDATE user set password = :passwordEdit WHERE email = :email";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":passwordEdit", $passwordEdit, PDO::PARAM_STR);
+        $stmt->execute();
+        // On conserve le resultat de la requete : si les données sont enregistré isAdd = true sinon false
+        $isModification = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isModification;
+    }
 }

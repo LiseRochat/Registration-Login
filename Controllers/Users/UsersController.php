@@ -117,7 +117,7 @@ class UsersController extends MainController {
         if($newPassword === $newPasswordConf) {
             if($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
                $passwordSecure = password_hash($newPassword, PASSWORD_DEFAULT);
-              if($this->UserManager->bdModificationPassword()) {
+              if($this->UserManager->bdModificationPassword($_SESSION['profil']['email'],$passwordSecure )) {
                 ToolBox::addMessageAlert("La modification du mots de passe à été effectuée!");
                 header("Location:".URL."compte/profil");
               } else {
