@@ -14,6 +14,11 @@
 <div>
     <button id="btnDeleteAccount">Supprimer mon compte</button>
 </div>
+<div id="deleteAccount" class="d-none">
+    Veuillez confirmez la suppression du compte
+    <br>
+    <a href="<?= URL; ?>compte/suppressionCompte">Supprimez le compte</a>
+</div>
 <div id="modificationMail" class="d-none">
     <form method="POST" action="<?= URL; ?>compte/validationMoficationMail">
         <label for="mail">Mail :</label>
