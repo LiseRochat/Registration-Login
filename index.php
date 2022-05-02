@@ -7,6 +7,7 @@ require_once("./Controllers/Users/UsersController.php");
 require_once("./Controllers/Administrators/AdminController.php");
 require_once("./Controllers/ToolBox.php");
 require_once("./Controllers/Security.php");
+
 $visitorController = new VisitorsController();
 $userController = new UsersController();
 $adminController = new AdminController();
@@ -24,8 +25,6 @@ try {
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
         $page = $url[0];
     }
-
-    // On gère le premier niveau d'url
     switch($page) {
         case "accueil" :
             $visitorController->home();
@@ -102,8 +101,7 @@ try {
                         } else {
                             ToolBox::addMessageAlert("Vous navez pas renseignez toutes les informations");
                             header('Location:'.URL."compte/modificationMotDePasse");
-                        }
-                        
+                        }       
                     break;
                     case "suppressionCompte" :
                         $userController->deleteAccount();
@@ -118,7 +116,6 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-            
             }
         case "administration" :
             if(!Security::isConnected() && Security::isAdmin()) {
@@ -139,7 +136,6 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-                
             }
         break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
