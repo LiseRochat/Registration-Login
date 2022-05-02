@@ -59,7 +59,7 @@ class UsersController extends MainController
         if ($this->UserManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0, 9999);
-            if ($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key, "/profil.png")) {
+            if ($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key, "/profils/profil.png")) {
                 $this->sendMailValidation($firstname, $email, $key);
                 ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
                 header("Location:" . URL . "login");
@@ -142,6 +142,11 @@ class UsersController extends MainController
             ToolBox::addMessageAlert("Les mots de passes ne correspondent pas !");
             header("Location:" . URL . "compte/modificationMotDePasse");
         }
+    }
+
+    public function validationEditAvatar($avatar) {
+        $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
+        ToolBox::addPicture($avatar,$repertoire);
     }
 
     public function deleteAccount()
