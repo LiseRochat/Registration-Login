@@ -15,6 +15,7 @@
                     <?= $user['role'] ?>
                 <?php else: ?>
                     <form method="POST" action="<?= URL ?>administration/validationModificationRole">
+                        <input type="hidden" name="email" value="<?php echo $user['email']?>"/>
                         <select name="role" onchange="confirm('confirmez vous la modification ?')? submit() : document.location.reload();">
                             <option value="user">Utilisateur</option>
                             <option value="userVIP">Utilisateur V.I.P.</option>
