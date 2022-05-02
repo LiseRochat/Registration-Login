@@ -109,7 +109,14 @@ try {
                 ToolBox::addMessageAlert("Veuillez vous connecter");
                 header('Location:'.URL."login");
             }
-            
+        case "administration" :
+            if(Security::isConnected() && Security::isAdmin()) {
+
+            } else {
+                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
+                header('Location:'.URL."login");
+            }
+        break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }
