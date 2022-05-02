@@ -59,7 +59,7 @@ class UsersController extends MainController
         if ($this->UserManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0, 9999);
-            if ($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key, "/profils/profil.png")) {
+            if ($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key, "profils/profil.png")) {
                 $this->sendMailValidation($firstname, $email, $key);
                 ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
                 header("Location:" . URL . "login");
@@ -153,10 +153,10 @@ class UsersController extends MainController
             // Delecte old avatar
             $oldAvatar = $this->UserManager->getAvatarUser($_SESSION['profil']['email']);
             if($oldAvatar !== "profils/profil.png") {
-                unlink("public/assetes/img/".$oldAvatar);
+                unlink("public/assets/img/".$oldAvatar);
             }
             $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
-            if($this->USerManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
+            if($this->UserManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
                 ToolBox::addMessageAlert("La modification de l'image est effectuée!");
             } else {
                 ToolBox::addMessageAlert("La modification de l'image n'a pas été effectuée !");

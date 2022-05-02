@@ -1,9 +1,9 @@
 <h1>Profil de <?= $user['firstname']    ; ?></h1>
 <div>
     <div>
-        <img src="<?= URL; ?>public/assets/img<?= $user['avatar']?>" alt="image de profil" width="100px">
+        <img src="<?= URL; ?>public/assets/img/<?= $user['avatar']?>" alt="image de profil" width="100px">
     </div>
-    <form methode="POST" action="<?= URL; ?>compte/validationModificationAvatar" enctype="multipart/from-data">
+    <form method="POST" action="<?= URL ?>compte/validationModificationAvatar" enctype="multipart/form-data">
         <label for="avatar">Changer votre Avatar :</label>
         <input type="file" name="avatar" id="avatar" onchange="submit();"/>
     </form>
