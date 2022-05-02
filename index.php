@@ -95,6 +95,14 @@ try {
                     case "suppressionCompte" :
                         $userController->deleteAccount();
                     break;
+                    case "validationModificationAvatar" :
+                        if($_FILES['avatar']['size'] > 0) {
+                            $this->userController->validationEditAvatar($_FILES['avatar']);
+                        } else {
+                            ToolBox::addMessageAlert("Vous navez pas ajoutez d'image");
+                            header('Location:'.URL."compte/profil");
+                        }
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
