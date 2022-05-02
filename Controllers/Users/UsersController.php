@@ -91,7 +91,7 @@ class UsersController extends MainController {
     }
 
     public function validationEditMail($email) {
-        if($this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
+        if($this->UserManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
             ToolBox::addMessageAlert("La modification est effectué !");
         } else {
             ToolBox::addMessageAlert("La modification n'as pas put être effectuée !");
@@ -129,6 +129,17 @@ class UsersController extends MainController {
         } else {
             ToolBox::addMessageAlert("Les mots de passes ne correspondent pas !");
             header("Location:".URL."compte/modificationMotDePasse");
+        }
+    }
+
+    public function deleteAccount() {
+        // Si la requete à fontionnée alors 
+        if($this->UserManager->bdDeleteAccount($_SESSION['profil']['email'])) {
+            ToolBox::addMessageAlert("Votre compte à été supprimé !");
+            $this->deconnection();
+        } else {
+            ToolBox::addMessageAlert("La suppression n'as pas été effectué, contactez l'administrateur !");
+            header("Location:".URL."compte/profil");
         }
     }
 

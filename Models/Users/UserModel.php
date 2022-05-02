@@ -96,4 +96,14 @@ class UserManager extends MainManager {
         $stmt->closeCursor();
         return $isModification;
     }
+
+    public function bdDeleteAccount($email) {
+        $req = "DELETE FROM user WHERE email = :email";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $isModification = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isModification;
+    }
 }
