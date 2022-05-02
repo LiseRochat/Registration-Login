@@ -10,10 +10,13 @@ class  AdminController extends MainController {
     }
 
     public function droits() {
+        $users = $this->adminManager->getUsers();
+
         $data_page = [
             "page_description" => "Gestion des droits d'utilisateurs",
             "page_title" => "Gestion des droits",
             "page_css" => ["home.css"],
+            'users' => $users,
             "view" => "Views/Administrators/droits.php",
             "template" => "Views/Common/template.php"
         ];
