@@ -10,4 +10,15 @@ class AdminManager extends MainManager {
         $req->closeCursor();
         return $datas;
     }
+
+    public function dbModificationRole($email, $role) {
+        $req ="UPDATE user set role = :role WHERE email = :email";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":role", $role, PDO::PARAM_STR);
+        $stmt->execute();
+        $isModification = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isModification;
+    }
 }

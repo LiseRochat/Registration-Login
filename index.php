@@ -117,6 +117,9 @@ try {
                     case "droits" :
                         $adminController->droits();
                     break;
+                    case "validationModificationRole" :
+                        $adminController->validationModificationRole($_POST['email'], $_POST['role']);
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
