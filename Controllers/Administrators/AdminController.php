@@ -24,7 +24,12 @@ class  AdminController extends MainController {
     }
 
     public function validationModificationRole($email, $role) {
-        $this->adminManager->dbModificationRole($email, $role);
+        if($this->adminManager->dbModificationRole($email, $role)) {
+            ToolBox::addMessageAlert("La modification du role à été prise en compte !");
+        } else {
+            ToolBox::addMessageAlert("La modification n'as pas fonctionnée !");
+        }
+        header("Location:" . URL . "administration/droits");
     }
     public function pageErrors($message) {
         parent::pageErrors($message);
