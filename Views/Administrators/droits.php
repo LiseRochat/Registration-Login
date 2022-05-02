@@ -10,7 +10,19 @@
         <tr>
             <td><?= $user['email']?></td>
             <td><?= (int)$user['isValid'] === 0? "non validé" : "validé"?></td>
-            <td><?= $user['role']?></td>
+            <td>
+                <?php if($user['role'] === "admin") :?>
+                    <?= $user['role'] ?>
+                <?php else: ?>
+                    <form method="POST" action="<?= URL ?>administration/validationModificationRole">
+                        <select name="role" onchange="sublit();">
+                            <option value="user">Utilisateur</option>
+                            <option value="userVIP">Utilisateur V.I.P.</option>
+                            <option value="admin">Administrateur</option>
+                        </select>
+                    </form>
+                <?php endif; ?>
+            </td>
         </tr>
         <?php endforeach; ?>
     </thead>
