@@ -75,7 +75,7 @@ class UsersController extends MainController
         }
     }
 
-    public function sendMailValidation($firstname, $email, $key)
+    public function sendMailValidation($email, $key)
     {
         $urlVerification = URL . "validationMail/" . $email . "/" . $key;
         $object = "Creation de compte sur le site";
@@ -92,7 +92,7 @@ class UsersController extends MainController
 
     public function validationMailAccount($email, $key)
     {
-        if ($this->UserManager->bddValidationMailAccount($email, $key)) {
+        if ($this->UserManager->dbValidationMailAccount($email, $key)) {
             ToolBox::addMessageAlert("Le compte à été activé !");
             header("Location:" . URL . "compte/profil");
         } else {
@@ -103,7 +103,7 @@ class UsersController extends MainController
 
     public function validationEditMail($email)
     {
-        if ($this->UserManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
+        if ($this->UserManager->dbEditMailUser($_SESSION['profil']['email'], $email)) {
             ToolBox::addMessageAlert("La modification est effectué !");
         } else {
             ToolBox::addMessageAlert("La modification n'as pas put être effectuée !");
@@ -129,7 +129,7 @@ class UsersController extends MainController
         if ($newPassword === $newPasswordConf) {
             if ($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
                 $passwordSecure = password_hash($newPassword, PASSWORD_DEFAULT);
-                if ($this->UserManager->bdModificationPassword($_SESSION['profil']['email'], $passwordSecure)) {
+                if ($this->UserManager->dbModificationPassword($_SESSION['profil']['email'], $passwordSecure)) {
                     ToolBox::addMessageAlert("La modification du mots de passe à été effectuée!");
                     header("Location:" . URL . "compte/profil");
                 } else {
@@ -172,7 +172,7 @@ class UsersController extends MainController
         $this->fileDeletePictureUser($_SESSION['profil']['email']);
         // On supprime le dossier
         rmdir("publi/assets/img/profils/".$_SESSION['profil']['email']);
-        if ($this->UserManager->bdDeleteAccount($_SESSION['profil']['email'])) {
+        if ($this->UserManager->dbDeleteAccount($_SESSION['profil']['email'])) {
             ToolBox::addMessageAlert("Votre compte à été supprimé !");
             $this->deconnection();
         } else {
