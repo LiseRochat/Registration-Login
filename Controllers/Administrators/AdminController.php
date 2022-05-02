@@ -10,9 +10,16 @@ class  AdminController extends MainController {
     }
 
     public function droits() {
-        echo "droits";
+        $data_page = [
+            "page_description" => "Gestion des droits d'utilisateurs",
+            "page_title" => "Gestion des droits",
+            "page_css" => ["home.css"],
+            "view" => "Views/Administrators/droits.php",
+            "template" => "Views/Common/template.php"
+        ];
+        $this->generatePage($data_page);
     }
-    
+
     public function pageErrors($message) {
         parent::pageErrors($message);
     }
