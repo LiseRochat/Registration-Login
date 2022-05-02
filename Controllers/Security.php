@@ -8,11 +8,11 @@ class Security {
         return (!empty($_SESSION['profil']));
     }
 
-    public function isUser() {
+    public static function isUser() {
         return ($_SESSION['profil']['role'] === "user");
     }
 
-    public function isAdmin() {
+    public static  function isAdmin() {
         return ($_SESSION['profil']['role'] === "admin");
     }
 }
