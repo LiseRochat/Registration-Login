@@ -53,7 +53,7 @@ class UsersController extends MainController {
         if($this->UserManager->verifEmailAvailable($email)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $key = rand(0,9999);
-            if($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key)) {
+            if($this->UserManager->dbCreationAccount($firstname, $lastname, $email, $passwordCrypte, $key, "img/profil.png")) {
                 $this->sendMailValidation($firstname, $email, $key);
                 ToolBox::addMessageAlert("Le compte à été créé, un mail de validation vous a été envoyé.");
                 header("Location:".URL."login");
