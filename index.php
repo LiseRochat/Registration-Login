@@ -77,7 +77,7 @@ try {
                 setcookie(Security::COOKIE_NAME,"",time()-3600);
                 unset($_SESSION["profil"]);
                 header('Location:'.URL."login");
-             } else {
+             }else {
                 //  Regeneration du cookie
                 Security::generateCookieConnection();
                 switch($url[1]) {
@@ -121,10 +121,6 @@ try {
             if(!Security::isConnected() && Security::isAdmin()) {
                 ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
                 header('Location:'.URL."accueil");
-            } elseif(!Security::checkCookieConnection()) {
-                setcookie(Security::COOKIE_NAME,"",time()-3600);
-                unset($_SESSION["profil"]);
-                header('Location:'.URL."login");
             } else {
                 Security::generateCookieConnection();
                 switch($url[1]) {
