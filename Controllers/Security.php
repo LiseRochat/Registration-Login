@@ -7,4 +7,12 @@ class Security {
         // Vrais si l'utilisateur est connécté faux si il ne l'es pas 
         return (!empty($_SESSION['profil']));
     }
+
+    public function isUser() {
+        return ($_SESSION['profil']['role'] === "user");
+    }
+
+    public function isAdmin() {
+        return ($_SESSION['profil']['role'] === "admin");
+    }
 }
