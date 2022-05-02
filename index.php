@@ -97,10 +97,10 @@ try {
                     break;
                     case "validationModificationAvatar" :
                         if($_FILES['avatar']['size'] > 0) {
-                            $this->userController->validationEditAvatar($_FILES['avatar']);
+                            $userController->validationEditAvatar($_FILES['avatar']);
                         } else {
-                            ToolBox::addMessageAlert("Vous navez pas ajoutez d'image");
-                            header('Location:'.URL."compte/profil");
+                            Toolbox::addMessageAlert("Vous n'avez pas modifié l'image");
+                            header("Location: ".URL."compte/profil");
                         }
                     break;
                     default : throw new Exception("La page n'existe pas !");
