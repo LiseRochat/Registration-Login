@@ -1,4 +1,11 @@
-<h1>Profil de <?= $user['firstname']; ?></h1>
+<h1>Profil de <?= $user['firstname']    ; ?></h1>
+<div>
+    <div>
+        <img src="<?= URL; ?>public/assets/img<?= $user['avatar']?>" alt="image de profil" width="100px">
+    </div>
+    <form methode="POST" action=""></form>
+</div>
+
 <div id="mail">
     Mail : <?= $user['email']; ?>
     <button id="btnModificationMail">
