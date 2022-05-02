@@ -3,7 +3,10 @@
     <div>
         <img src="<?= URL; ?>public/assets/img<?= $user['avatar']?>" alt="image de profil" width="100px">
     </div>
-    <form methode="POST" action=""></form>
+    <form methode="POST" action="<?= URL; ?>compte/validationModificationAvatar" enctype="multipart/from-data">
+        <label for="avatar">Changer votre Avatar :</label>
+        <input type="file" name="avatar" id="avatar" onchange="submit();"/>
+    </form>
 </div>
 
 <div id="mail">
