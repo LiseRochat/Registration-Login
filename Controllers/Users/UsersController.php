@@ -146,14 +146,15 @@ class UsersController extends MainController
 
     public function validationEditAvatar($avatar) 
     {
-        $oldAvatar = $this->UserManager->getAvatarUser($_SESSION['profil']['email']);
-        if($oldAvatar !== "profils/profil.png") {
-            unlink("public/assetes/img/".$oldAvatar);
-        }
-
-        try {
+        try{
             $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
+            // Add avatar on file
             $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
+            // Delecte old avatar
+            $oldAvatar = $this->UserManager->getAvatarUser($_SESSION['profil']['email']);
+            if($oldAvatar !== "profils/profil.png") {
+                unlink("public/assetes/img/".$oldAvatar);
+            }
             $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
             if($this->USerManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
                 ToolBox::addMessageAlert("La modification de l'image est effectuée!");
