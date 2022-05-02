@@ -132,6 +132,17 @@ class UsersController extends MainController {
         }
     }
 
+    public function deleteAccount() {
+        // Si la requete à fontionnée alors 
+        if($this->UserManager->bdDeleteAccount($_SESSION['profil']['email'])) {
+            ToolBox::addMessageAlert("Votre compte à été supprimé !");
+            $this->deconnection();
+        } else {
+            ToolBox::addMessageAlert("La suppression n'as pas été effectué, contactez l'administrateur !");
+            header("Location:".URL."compte/profil");
+        }
+    }
+
     // Heritage
     public function pageErrors($message) {
         parent::pageErrors($message);
