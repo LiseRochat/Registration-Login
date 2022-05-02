@@ -4,10 +4,12 @@ session_start();
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS'])? "https" : "http")."://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 require_once("./Controllers/Visitors/VisitorsController.php");
 require_once("./Controllers/Users/UsersController.php");
+require_once("./Controllers/Administrators/AdminController.php");
 require_once("./Controllers/ToolBox.php");
 require_once("./Controllers/Security.php");
 $visitorController = new VisitorsController();
 $userController = new UsersController();
+$adminController = new AdminController();
 
 try {
     // Test si l'information index.php?page= est vide 
@@ -109,7 +111,19 @@ try {
                 ToolBox::addMessageAlert("Veuillez vous connecter");
                 header('Location:'.URL."login");
             }
-            
+        case "administration" :
+            if(Security::isConnected() && Security::isAdmin()) {
+                switch($url[1]) {
+                    case "droits" :
+                        $adminController->droits();
+                    break;
+                    default : throw new Exception("La page n'existe pas !");
+                }
+            } else {
+                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
+                header('Location:'.URL."accueil");
+            }
+        break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }
