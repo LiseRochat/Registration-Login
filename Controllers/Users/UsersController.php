@@ -91,7 +91,7 @@ class UsersController extends MainController {
     }
 
     public function validationEditMail($email) {
-        if($this->userManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
+        if($this->UserManager->bdEditMailUser($_SESSION['profil']['email'], $email)) {
             ToolBox::addMessageAlert("La modification est effectué !");
         } else {
             ToolBox::addMessageAlert("La modification n'as pas put être effectuée !");
