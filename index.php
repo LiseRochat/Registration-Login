@@ -92,6 +92,9 @@ try {
                         }
                         
                     break;
+                    case "suppessionCompte" :
+                        $userController->deleteAccount();
+                    break;
                     default : throw new Exception("La page n'existe pas !");
                 }
             } else {
