@@ -23,6 +23,9 @@ class  AdminController extends MainController {
         $this->generatePage($data_page);
     }
 
+    public function validationModificationRole($email, $role) {
+        $this->adminManager->dbModificationRole($email, $role);
+    }
     public function pageErrors($message) {
         parent::pageErrors($message);
     }

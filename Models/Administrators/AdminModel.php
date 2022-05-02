@@ -10,4 +10,8 @@ class AdminManager extends MainManager {
         $req->closeCursor();
         return $datas;
     }
+
+    public function dbModificationRole($email, $role) {
+        
+    }
 }
