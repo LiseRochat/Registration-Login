@@ -144,7 +144,13 @@ class UsersController extends MainController
         }
     }
 
-    public function validationEditAvatar($avatar) {
+    public function validationEditAvatar($avatar) 
+    {
+        $oldAvatar = $this->UserManager->getAvatarUser($_SESSION['profil']['email']);
+        if($oldAvatar !== "profils/profil.png") {
+            unlink("public/assetes/img/".$oldAvatar);
+        }
+        
         $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
         $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
         $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
@@ -158,7 +164,6 @@ class UsersController extends MainController
 
     public function deleteAccount()
     {
-        // Si la requete à fontionnée alors 
         if ($this->UserManager->bdDeleteAccount($_SESSION['profil']['email'])) {
             ToolBox::addMessageAlert("Votre compte à été supprimé !");
             $this->deconnection();
