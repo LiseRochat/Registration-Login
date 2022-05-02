@@ -146,7 +146,14 @@ class UsersController extends MainController
 
     public function validationEditAvatar($avatar) {
         $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
-        ToolBox::addPicture($avatar,$repertoire);
+        $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
+        $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
+        if($this->USerManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
+            ToolBox::addMessageAlert("La modification de l'image est effectuée!");
+        } else {
+            ToolBox::addMessageAlert("La modification de l'image n'a pas été effectuée !");
+        }
+        header("Location:" . URL . "compte/profil");
     }
 
     public function deleteAccount()
