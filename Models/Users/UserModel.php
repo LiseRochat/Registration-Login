@@ -98,6 +98,18 @@ class UserManager extends MainManager {
         return $isModification;
     }
 
+    public function dbAddPicture($email,$dbNameAvatar) {
+        $req ="UPDATE user set avatar = :dbNameAvatar WHERE email = :email";
+        $stmt = $this->getBDD()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":dbNameAvatar", $dbNameAvatar, PDO::PARAM_STR);
+        $stmt->execute();
+        // On conserve le resultat de la requete : si les données sont enregistré isAdd = true sinon false
+        $isModification = ($stmt->rowCount()>0);
+        $stmt->closeCursor();
+        return $isModification;
+    }
+    
     public function bdDeleteAccount($email) {
         $req = "DELETE FROM user WHERE email = :email";
         $stmt = $this->getBDD()->prepare($req);
