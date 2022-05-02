@@ -13,7 +13,7 @@ class UsersController extends MainController
 
     public function validationLogin($email, $password)
     {
-        if ($this->UserManager->isValide($email, $password)) {
+        if ($this->UserManager->isValid($email, $password)) {
             if ($this->UserManager->isAccountValid($email)) {
                 ToolBox::addMessageAlert("Bon retour sur le site " . $email);
                 $_SESSION['profil'] = [
@@ -127,7 +127,7 @@ class UsersController extends MainController
     public function validationEditPassword($oldPassword, $newPassword, $newPasswordConf)
     {
         if ($newPassword === $newPasswordConf) {
-            if ($this->UserManager->isValide($_SESSION['profil']['email'], $oldPassword)) {
+            if ($this->UserManager->isValid($_SESSION['profil']['email'], $oldPassword)) {
                 $passwordSecure = password_hash($newPassword, PASSWORD_DEFAULT);
                 if ($this->UserManager->dbModificationPassword($_SESSION['profil']['email'], $passwordSecure)) {
                     ToolBox::addMessageAlert("La modification du mots de passe à été effectuée!");

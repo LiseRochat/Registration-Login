@@ -13,7 +13,7 @@ class UserManager extends MainManager {
         return $resultat['password'];
     }
 
-    public function isValide($email, $password) {
+    public function isValid($email, $password) {
         $passwordDB = $this->getPasswordUser($email);
         return password_verify($password, $passwordDB);
     }
