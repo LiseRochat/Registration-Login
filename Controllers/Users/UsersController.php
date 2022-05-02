@@ -150,15 +150,20 @@ class UsersController extends MainController
         if($oldAvatar !== "profils/profil.png") {
             unlink("public/assetes/img/".$oldAvatar);
         }
-        
-        $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
-        $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
-        $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
-        if($this->USerManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
-            ToolBox::addMessageAlert("La modification de l'image est effectuée!");
-        } else {
-            ToolBox::addMessageAlert("La modification de l'image n'a pas été effectuée !");
+
+        try {
+            $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
+            $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
+            $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
+            if($this->USerManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
+                ToolBox::addMessageAlert("La modification de l'image est effectuée!");
+            } else {
+                ToolBox::addMessageAlert("La modification de l'image n'a pas été effectuée !");
+            }
+        } catch(Exception $e) {
+            ToolBox::addMessageAlert($e->getMessage());
         }
+        
         header("Location:" . URL . "compte/profil");
     }
 
