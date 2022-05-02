@@ -150,11 +150,7 @@ class UsersController extends MainController
             $repertoire = "public/assets/img/profils/".$_SESSION['profil']["email"]."/";
             // Add avatar on file
             $nameAvatar = ToolBox::addPicture($avatar,$repertoire);
-            // Delecte old avatar
-            $oldAvatar = $this->UserManager->getAvatarUser($_SESSION['profil']['email']);
-            if($oldAvatar !== "profils/profil.png") {
-                unlink("public/assets/img/".$oldAvatar);
-            }
+            $this->fileDeletePictureUser($_SESSION['profil']['email']);
             $dbNameAvatar = "profils/".$_SESSION['profil']["email"]."/".$nameAvatar;
             if($this->UserManager->dbAddPicture($_SESSION['profil']['email'],$dbNameAvatar)) {
                 ToolBox::addMessageAlert("La modification de l'image est effectuée!");
@@ -170,12 +166,23 @@ class UsersController extends MainController
 
     public function deleteAccount()
     {
+        //On supprime l'image dans le dossier 
+        $this->fileDeletePictureUser($_SESSION['profil']['email']);
+        // On supprime le dossier
+        rmdir("publi/assets/img/profils/".$_SESSION['profil']['email']);
         if ($this->UserManager->bdDeleteAccount($_SESSION['profil']['email'])) {
             ToolBox::addMessageAlert("Votre compte à été supprimé !");
             $this->deconnection();
         } else {
             ToolBox::addMessageAlert("La suppression n'as pas été effectué, contactez l'administrateur !");
             header("Location:" . URL . "compte/profil");
+        }
+    }
+
+    private function fileDeletePictureUser($email) {
+        $oldAvatar = $this->UserManager->getAvatarUser($email);
+        if($oldAvatar !== "profils/profil.png") {
+            unlink("public/assets/img/".$oldAvatar);
         }
     }
 
