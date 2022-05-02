@@ -19,6 +19,7 @@ class UsersController extends MainController
                 $_SESSION['profil'] = [
                     'email' => $email,
                 ];
+                Security::generateCookieConnection();
                 header("Location:" . URL . "compte/profil");
             } else {
                 $msg = "Le compte " . $email . " n'a pas été activé par mail.";
@@ -51,6 +52,7 @@ class UsersController extends MainController
     public function deconnection()
     {
         unset($_SESSION['profil']);
+        setcookie(Security::COOKIE_NAME,"",time()-3600);
         header("Location:" . URL . "accueil");
     }
 

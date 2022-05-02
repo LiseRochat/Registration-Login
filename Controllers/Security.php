@@ -1,6 +1,6 @@
 <?php
 class Security {
-    public const COOKIE_NAME="cookies";
+    public const COOKIE_NAME = "cookies";
 
     public static function secureHTML($datas) {
         return htmlentities($datas);

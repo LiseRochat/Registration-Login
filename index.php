@@ -69,7 +69,18 @@ try {
             $userManager->validationMailAccount($urm[1],$url[2]);
             break;
         case "compte" :
-            if(Security::isConnected()) {
+            if(!Security::isConnected()) {
+                ToolBox::addMessageAlert("Veuillez vous connecter");
+                header('Location:'.URL."login");
+            } elseif(!Security::checkCookieConnection()) {
+                ToolBox::addMessageAlert("Veuillez vous reconnecter");
+                // Delete cookie
+                setcookie(Security::COOKIE_NAME,"",time()-3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
+             } else {
+                //  Regeneration du cookie
+                 Security::generateCookieConnection();
                 switch($url[1]) {
                     case "profil" : 
                         $userController->profil();
@@ -107,9 +118,7 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-            } else {
-                ToolBox::addMessageAlert("Veuillez vous connecter");
-                header('Location:'.URL."login");
+            
             }
         case "administration" :
             if(Security::isConnected() && Security::isAdmin()) {
