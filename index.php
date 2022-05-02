@@ -80,7 +80,7 @@ try {
                 header('Location:'.URL."login");
              } else {
                 //  Regeneration du cookie
-                 Security::generateCookieConnection();
+                Security::generateCookieConnection();
                 switch($url[1]) {
                     case "profil" : 
                         $userController->profil();
@@ -121,7 +121,15 @@ try {
             
             }
         case "administration" :
-            if(Security::isConnected() && Security::isAdmin()) {
+            if(!Security::isConnected() && Security::isAdmin()) {
+                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
+                header('Location:'.URL."accueil");
+            } elseif(!Security::checkCookieConnection()) {
+                setcookie(Security::COOKIE_NAME,"",time()-3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
+            } else {
+                Security::generateCookieConnection();
                 switch($url[1]) {
                     case "droits" :
                         $adminController->droits();
@@ -131,9 +139,7 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-            } else {
-                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
-                header('Location:'.URL."accueil");
+                
             }
         break;
         // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
