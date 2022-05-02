@@ -1,5 +1,7 @@
 <?php
 class Security {
+    public const COOKIE_NAME="cookies";
+
     public static function secureHTML($datas) {
         return htmlentities($datas);
     }
@@ -14,5 +16,12 @@ class Security {
 
     public static  function isAdmin() {
         return ($_SESSION['profil']['role'] === "admin");
+    }
+
+    public function generateCookieConnection() {
+        $ticket = session_id().microtime().rand(0,9999999);
+        $ticket = hash("sha512",$ticket);
+        setcookie(self::COOKIE_NAME,$ticket,time()+(60*20));
+        $_SESSION['profil'][self::COOKIE_NAME] = $ticket;
     }
 }
