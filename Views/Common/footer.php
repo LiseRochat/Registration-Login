@@ -1,3 +1,3 @@
 <footer>
-    <h2>Simple Footer</h2>
+    <h2>PHP POO | SQL Wamp Server | HTML CSS JavaScript</h2>
 </footer>

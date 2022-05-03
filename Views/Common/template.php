@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo $page_description; ?>">
     <title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" href="<?php echo URL ?>public/CSS/main.css">
+    <link rel="stylesheet" href="<?php echo URL ?>public/style/style.css">
     <?php if(!empty($page_css)) : ?>
         <?php foreach($page_css as $file_css) : ?>
             <link rel="stylesheet" href="<?php echo URL ?>public/style/<?php echo $file_css ?>">
