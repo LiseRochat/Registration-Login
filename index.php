@@ -72,7 +72,11 @@ try {
             if(!Security::isConnected()) {
                 ToolBox::addMessageAlert("Veuillez vous connecter");
                 header('Location:'.URL."login");
-                
+            } elseif(!Security::checkCookieConnection()) {
+                ToolBox::addMessageAlert("Veuillez vous reconnecter");
+                setcookie(Security::COOKIE_NAME,"",time() - 3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
             } else {
                 switch($url[1]) {
                     case "profil" : 
@@ -120,6 +124,11 @@ try {
             } elseif(!Security::isAdmin()) {
                 ToolBox::addMessageAlert("Vous ne disposez pas des droits !");
                 header('Location:'.URL."accueil");
+            } elseif(!Security::checkCookieConnection()) {
+                ToolBox::addMessageAlert("Veuillez vous reconnecter");
+                setcookie(Security::COOKIE_NAME,"",time() - 3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
             } else {
                 switch($url[1]) {
                     case "droits" :
