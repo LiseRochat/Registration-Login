@@ -15,7 +15,7 @@
 </head>
 <body>
     <?php require_once("Views/Common/header.php") ?>
-
+    <main>
     <?php if(!empty($_SESSION['alert'])) { 
             foreach($_SESSION['alert'] as $alert) {
                 echo "<p>". $alert['message']."</p>";
@@ -24,6 +24,7 @@
         }
     ?>
     <?php echo $page_content; ?>
+    </main>
     <?php require_once("Views/Common/footer.php") ?>
     <?php if(!empty($page_js)) : ?>
         <?php foreach($page_js as $file_js) : ?>

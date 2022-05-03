@@ -36,9 +36,24 @@ header nav ul li {
 header nav ul li a:hover {
     color:#FFBBEC;
 }
+/* ************************************ MAIN ************************************ */
+main {
+    height: 85vh;
+    align-items: center;
+    text-align: center;
+}
 
+h1 {
+    padding: 10px 0;
+}
+
+main p {
+    margin: 0 auto;
+    width: 500px;
+    padding: 40px 0;
+}
 /* ************************************ FOOTER ************************************ */
 footer{
-    height: 10vh;
+    height: 5vh;
     text-align: center;
 }
