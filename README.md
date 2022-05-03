@@ -32,7 +32,7 @@ Realization of a complete user account management in PHP (MVC / CRUD)
 
 ### Visual
 Here is an overview of project. </br>
-<img src="assets/img/screenshot01.png" alt="screenshot result">
+<img src="public/assets/img/screenshot01.png" alt="screenshot result">
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
