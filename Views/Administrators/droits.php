@@ -1,5 +1,6 @@
 <h1>Page de gestion des droits utilisateurs</h1>
-<table>
+<div class="admin">
+    <table>
     <thead>
         <tr>
             <td>Email</td>
@@ -28,3 +29,4 @@
         <?php endforeach; ?>
     </thead>
 </table>
+</div>

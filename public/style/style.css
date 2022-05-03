@@ -90,7 +90,8 @@ main .card form input {
     cursor: pointer;  
 }
 /* ************************************ PROFIL ************************************ */
-.profil {
+.profil,
+.admin {
     background: rgba(255, 255, 255, 0.213);
     border-radius: 20px;
     display: flex;
@@ -98,7 +99,7 @@ main .card form input {
     margin: 0 auto;
     width: 500px;
     height: 50vh;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px 20px;
 }
 
@@ -107,7 +108,21 @@ main .card form input {
     height: 20px;
 }
 /* ************************************ ADMIN ************************************ */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border: 2px solid black; 
+}
+caption {
+    font-style: italic;
+    padding: 5px;
+}
 
+tr,
+td {
+    border: 2px solid black;
+    padding: 5px;
+}
 /* ************************************ FOOTER ************************************ */
 footer{
     height: 5vh;
