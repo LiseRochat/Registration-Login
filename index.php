@@ -84,6 +84,7 @@ try {
                     break;
                     case "deconnexion" : 
                         $userController->deconnection();
+                    break;
                     case "validationMoficationMail" :
                         $userController->validationEditMail(Security::secureHTML($_POST['mail']));
                     break;
