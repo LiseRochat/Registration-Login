@@ -1,4 +1,5 @@
 <h1>Profil de <?= $user['firstname']    ; ?></h1>
+<div class="profil">
 <div>
     <div>
         <img src="<?= URL; ?>public/assets/img/<?= $user['avatar']?>" alt="image de profil" width="100px">
@@ -22,12 +23,12 @@
     <a href="<?= URL; ?>compte/modificationMotDePasse">Changer le mot de passe</a>
 </div>
 <div>
-    <button id="btnDeleteAccount">Supprimer mon compte</button>
+    <button id="btnDeleteAccount" class="submit">Supprimer mon compte</button>
 </div>
 <div id="deleteAccount" class="d-none">
-    Veuillez confirmez la suppression du compte
+    Veuillez confirmez la suppression du compte :
     <br>
-    <a href="<?= URL; ?>compte/suppressionCompte">Supprimez le compte</a>
+    <a href="<?= URL; ?>compte/suppressionCompte">Cliquez ici pour supprimez le compte</a>
 </div>
 <div id="modificationMail" class="d-none">
     <form method="POST" action="<?= URL; ?>compte/validationMoficationMail">
@@ -35,4 +36,5 @@
         <input type="mail" name="mail" value="<?= $user['email']; ?>"/>
         <button type="submit" id="btnValidationModificationMail">Valider</button>
     </form>
+</div>
 </div>
