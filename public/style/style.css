@@ -20,7 +20,8 @@ header {
     align-items: center;
     height: 10vh;
 }
-header h2 {
+header h2,
+footer h2 {
     font-size: 1rem;
     padding: 0 10px;
 }
@@ -36,3 +37,8 @@ header nav ul li a:hover {
     color:#FFBBEC;
 }
 
+/* ************************************ FOOTER ************************************ */
+footer{
+    height: 10vh;
+    text-align: center;
+}
