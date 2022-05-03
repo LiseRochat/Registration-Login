@@ -47,21 +47,13 @@ main {
 }
 
 h1 {
-    padding: 10px 0;
-}
-.home {
-    background: rgba(255, 255, 255, 0.213);
-    border-radius: 20px;
-    margin: 0 auto;
-    width: 500px;
-}
-main p {
-    margin: 0 auto;
-    width: 500px;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 /* ************************************ CONNECTION INSCRIPTION ************************************ */
-main .card form {
+main .card form,
+.profil,
+.admin,
+.home {
     background: rgba(255, 255, 255, 0.213);
     border-radius: 20px;
     display: flex;
@@ -69,7 +61,7 @@ main .card form {
     margin: 0 auto;
     width: 500px;
     height: 50vh;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px 20px;
 }
 main .card form input {
@@ -90,19 +82,6 @@ main .card form input {
     cursor: pointer;  
 }
 /* ************************************ PROFIL ************************************ */
-.profil,
-.admin {
-    background: rgba(255, 255, 255, 0.213);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 500px;
-    height: 50vh;
-    justify-content: space-around;
-    padding: 20px 20px;
-}
-
 #btnModificationMail svg {
     cursor: pointer;
     height: 20px;
