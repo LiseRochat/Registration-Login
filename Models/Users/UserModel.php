@@ -13,7 +13,7 @@ class UserManager extends MainManager {
         return $resultat['password'];
     }
 
-    public function isValide($email, $password) {
+    public function isValid($email, $password) {
         $passwordDB = $this->getPasswordUser($email);
         return password_verify($password, $passwordDB);
     }
@@ -63,7 +63,7 @@ class UserManager extends MainManager {
         return $isAdd;
     }
 
-    public function bddValidationMailAccount($email, $key) {
+    public function dbValidationMailAccount($email, $key) {
         $req ="UPDATE user set isValid = 1 WHERE email = :email and keyValidation = :key";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);
@@ -75,7 +75,7 @@ class UserManager extends MainManager {
         return $isModification;
     }
 
-    public function bdEditMailUser($email, $emailEdit) {
+    public function dbEditMailUser($email, $emailEdit) {
         $req ="UPDATE user set email = :emailEdit WHERE email = :email";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);
@@ -87,7 +87,7 @@ class UserManager extends MainManager {
         return $isModification;
     }
 
-    public function bdModificationPassword($email,$passwordEdit ) {
+    public function dbModificationPassword($email,$passwordEdit ) {
         $req ="UPDATE user set password = :passwordEdit WHERE email = :email";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);
@@ -118,7 +118,7 @@ class UserManager extends MainManager {
         $stmt->closeCursor();
         return $resultat['avatar'];
     }
-    public function bdDeleteAccount($email) {
+    public function dbDeleteAccount($email) {
         $req = "DELETE FROM user WHERE email = :email";
         $stmt = $this->getBDD()->prepare($req);
         $stmt->bindValue(":email", $email, PDO::PARAM_STR);

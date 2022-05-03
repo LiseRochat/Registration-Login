@@ -4,5 +4,4 @@ require_once("ModelClass.php");
 
 abstract class MainManager extends Model{
 
-   
 }

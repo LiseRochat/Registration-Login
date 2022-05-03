@@ -69,13 +69,22 @@ try {
             $userManager->validationMailAccount($urm[1],$url[2]);
             break;
         case "compte" :
-            if(Security::isConnected()) {
+            if(!Security::isConnected()) {
+                ToolBox::addMessageAlert("Veuillez vous connecter");
+                header('Location:'.URL."login");
+            } elseif(!Security::checkCookieConnection()) {
+                ToolBox::addMessageAlert("Veuillez vous reconnecter");
+                setcookie(Security::COOKIE_NAME,"",time() - 3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
+            } else {
                 switch($url[1]) {
                     case "profil" : 
                         $userController->profil();
                     break;
                     case "deconnexion" : 
                         $userController->deconnection();
+                    break;
                     case "validationMoficationMail" :
                         $userController->validationEditMail(Security::secureHTML($_POST['mail']));
                     break;
@@ -107,12 +116,21 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-            } else {
-                ToolBox::addMessageAlert("Veuillez vous connecter");
-                header('Location:'.URL."login");
             }
+        break;
         case "administration" :
-            if(Security::isConnected() && Security::isAdmin()) {
+            if(!Security::isConnected()) {
+                ToolBox::addMessageAlert("Veuillez vous connecter !");
+                header('Location:'.URL."accueil");
+            } elseif(!Security::isAdmin()) {
+                ToolBox::addMessageAlert("Vous ne disposez pas des droits !");
+                header('Location:'.URL."accueil");
+            } elseif(!Security::checkCookieConnection()) {
+                ToolBox::addMessageAlert("Veuillez vous reconnecter");
+                setcookie(Security::COOKIE_NAME,"",time() - 3600);
+                unset($_SESSION["profil"]);
+                header('Location:'.URL."login");
+            } else {
                 switch($url[1]) {
                     case "droits" :
                         $adminController->droits();
@@ -122,12 +140,9 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas !");
                 }
-            } else {
-                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
-                header('Location:'.URL."accueil");
             }
         break;
-        // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
+        //Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }
 } catch (Exception $e) {
