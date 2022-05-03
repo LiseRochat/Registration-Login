@@ -19,7 +19,7 @@
                         <select name="role" onchange="confirm('confirmez vous la modification ?')? submit() : document.location.reload();">
                             <option value="user" <?= $user['role'] === "user" ? "selected" : "" ?>>Utilisateur</option>
                             <option value="userVIP" <?= $user['role'] === "userVIP" ? "selected" : "" ?> >Utilisateur V.I.P.</option>
-                            <option value="admin" <?= $user['role'] === "user" ? "selected" : "" ?> >Administrateur</option>
+                            <option value="admin" <?= $user['role'] === "admin" ? "selected" : "" ?> >Administrateur</option>
                         </select>
                     </form>
                 <?php endif; ?>
