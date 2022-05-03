@@ -7,7 +7,6 @@ require_once("./Controllers/Users/UsersController.php");
 require_once("./Controllers/Administrators/AdminController.php");
 require_once("./Controllers/ToolBox.php");
 require_once("./Controllers/Security.php");
-
 $visitorController = new VisitorsController();
 $userController = new UsersController();
 $adminController = new AdminController();
@@ -25,6 +24,8 @@ try {
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
         $page = $url[0];
     }
+
+    // On gère le premier niveau d'url
     switch($page) {
         case "accueil" :
             $visitorController->home();
@@ -71,15 +72,8 @@ try {
             if(!Security::isConnected()) {
                 ToolBox::addMessageAlert("Veuillez vous connecter");
                 header('Location:'.URL."login");
-            } elseif(!Security::checkCookieConnection()) {
-                ToolBox::addMessageAlert("Veuillez vous reconnecter");
-                // Delete cookie
-                setcookie(Security::COOKIE_NAME,"",time()-3600);
-                unset($_SESSION["profil"]);
-                header('Location:'.URL."login");
-             }else {
-                //  Regeneration du cookie
-                Security::generateCookieConnection();
+                
+            } else {
                 switch($url[1]) {
                     case "profil" : 
                         $userController->profil();
@@ -101,7 +95,8 @@ try {
                         } else {
                             ToolBox::addMessageAlert("Vous navez pas renseignez toutes les informations");
                             header('Location:'.URL."compte/modificationMotDePasse");
-                        }       
+                        }
+                        
                     break;
                     case "suppressionCompte" :
                         $userController->deleteAccount();
@@ -117,12 +112,15 @@ try {
                     default : throw new Exception("La page n'existe pas !");
                 }
             }
+        break;
         case "administration" :
-            if(!Security::isConnected() && Security::isAdmin()) {
-                ToolBox::addMessageAlert("Veuillez ne disposez pas des droits administrateur");
+            if(!Security::isConnected()) {
+                ToolBox::addMessageAlert("Veuillez vous connecter !");
+                header('Location:'.URL."accueil");
+            } elseif(!Security::isAdmin()) {
+                ToolBox::addMessageAlert("Vous ne disposez pas des droits !");
                 header('Location:'.URL."accueil");
             } else {
-                Security::generateCookieConnection();
                 switch($url[1]) {
                     case "droits" :
                         $adminController->droits();
@@ -134,7 +132,7 @@ try {
                 }
             }
         break;
-        // Classe existante de base de php pour gérer toutes les exceptions utilisateur.
+        //Classe existante de base de php pour gérer toutes les exceptions utilisateur.
         default : throw new Exception("La page n'existe pas !");
     }
 } catch (Exception $e) {
