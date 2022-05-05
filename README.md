@@ -62,13 +62,13 @@ git clone https://github.com/LiseRochat/Registration-Login
   localhost/Registration-Login
  ```
  7. If you just want test connection use :
-    **ADMIN**
-    **email** : admin@gmail.com
-    **password** : azerty
-    **USER**
-    **email** : user@milou.fr
-    **password** : tintin
-<p align="right">(<a href="#top">back to top</a>)</p>
+    -  **ADMIN** <br>
+        **email** : admin@gmail.com <br>
+        **password** : azerty <br>
+    - **USER** <br>
+        **email** : user@milou.fr <br>
+        **password** : tintin <br>
+<p align="right">(<a href="#top">back to top</a>)</p> <br>
 
 ***
 
